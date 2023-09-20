@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<theme-info xmlns="http://www.simplemachines.org/xml/theme-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>smftricks:Endar</id>
+	<!-- The theme's version -->
+	<version>1.0</version>
+	<install for="2.1 - 2.1.99" />
+	<name>Endar</name>
+	<author name="SMF Tricks">admin@smftricks.com</author>
+	<website>https://www.smftricks.com/</website>
+	<!-- Template layers to use, defaults to "html,body". -->
+	<layers>html,body</layers>
+	<!-- Templates to load on startup. Default is "index". -->
+	<templates>index,themecustoms/templates/theme</templates>
+</theme-info>
