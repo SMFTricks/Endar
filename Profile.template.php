@@ -61,12 +61,7 @@ function template_profile_popup()
 		<div class="profile_user_info floatleft">
 			<span class="profile_username"><a href="', $scripturl, '?action=profile;u=', $context['user']['id'], '">', $context['user']['name'], '</a></span>
 			<span class="profile_group">', $context['member']['group'], '</span>
-		</div>';
-
-		// Load the languages, if any
-		themecustoms_languageselector();
-
-	echo '
+		</div>
 		<div class="profile_user_links unread_buttons">
 			<ol>
 				<li>

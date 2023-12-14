@@ -220,6 +220,9 @@
 		border-width: 1px 0 0;
 		border-style: solid;
 	}
+	.boardindex_table .b_redirect .lastpost {
+		display: none;
+	}
 	.boardindex_table .lastpost p span {
 		display: inline;
 	}
@@ -464,13 +467,13 @@
 	.inlineblock_720 {
 		display: inline-block;
 	}
-	#info_center_blocks #block-forum_stats {
+	#infocenter_blocks #block-forum_stats {
 		flex-direction: row;
 	}
-	#info_center_blocks #block-forum_stats div:not(.sub_bar) {
+	#infocenter_blocks #block-forum_stats div:not(.sub_bar) {
 		flex-basis: 100%;
 	}
-	#info_center_blocks #block-forum_stats > span {
+	#infocenter_blocks #block-forum_stats > span {
 		text-align: center;
 	}
 }
@@ -495,6 +498,9 @@
 
 @media (max-width: 767px)
 {
+	#info_center span.user-online-block span.online-name {
+		display: none;
+	}
 	.navigate_section ul li:not(:last-child, :first-child, :nth-child(2)) {
 		display: none;
 	}
@@ -637,10 +643,10 @@
 		text-align: center;
 		align-items: center;
 	}
-	#info_center_blocks #block-forum_stats div {
+	#infocenter_blocks #block-forum_stats div {
 		flex-basis: 100%;
 	}
-	#info_center_blocks #block-forum_stats > span {
+	#infocenter_blocks #block-forum_stats > span {
 		margin: 0 auto;
 	}
 	nav#main_nav ul.menu_nav,
@@ -700,6 +706,12 @@
 
 /* Entry level phones */
 @media (max-width: 480px) {
+	#info_center .info-block .block-icon {
+		display: none;
+	}
+	#info_center .info-block > div:not(.block-icon) {
+		grid-column: 1/-1;
+	}
 	#pm_menu, #alerts_menu, #profile_menu {
 		min-width: initial;
 		max-width: calc(100vw - 17px);
@@ -710,28 +722,24 @@
 	.pagesection > div {
 		flex-basis: 100%;
 	}
-	#info_center_blocks {
+	#infocenter_blocks {
 		flex-direction: column;
 	}
-	#info_center_blocks ul {
+	#infocenter_blocks ul {
 		flex-direction: row;
 		margin-inline: 0;
 	}
 	#recent_posts_content ul li.windowbg {
 		padding-inline: 0.25em;
 	}
-	#recent_posts_content ul li img.avatar {
-		width: 20px;
-		height: 20px;
-	}
-	#info_center_blocks .ui-tabs-nav li.title_bar.ui-tabs-active {
+	#infocenter_blocks .ui-tabs-nav li.title_bar.ui-tabs-active {
 		background: var(--titlebg-bg);
 	}
-	#info_center_blocks .ui-tabs-nav li:last-child {
+	#infocenter_blocks .ui-tabs-nav li:last-child {
 		border-bottom-left-radius: 0;
 		border-top-right-radius: 4px;
 	}
-	#info_center_blocks ul li.ui-tabs-active {
+	#infocenter_blocks ul li.ui-tabs-active {
 		border-width: 3px 0 0;
 	}
 	.forum_date {
@@ -1006,7 +1014,7 @@
 	.custom_search input[name="search"]:focus {
 		width: 9em;
 	}
-	#info_center_blocks #block-forum_stats div span.title > span.block-title {
+	#infocenter_blocks #block-forum_stats div span.title > span.block-title {
 		display: none;
 	}
 }

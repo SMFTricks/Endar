@@ -125,6 +125,13 @@ $(function() {
 			});
 		}
 	});
+
+	// Language
+	document.getElementById('language_menu_top').addEventListener('click', e => {
+		e.preventDefault()
+		document.getElementById('languages_form').style.display = 'flex';
+		document.getElementById('language_menu_top').style.display = 'none';
+	})
 });
 
 // Variants in the pick theme area

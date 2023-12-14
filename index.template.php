@@ -198,7 +198,7 @@ function template_theme_header()
  */
 function template_theme_userarea()
 {
-	global $context, $scripturl, $maintenance, $txt, $settings;
+	global $context, $scripturl, $maintenance, $txt, $settings, $modSettings;
 
 	// Firstly, the user's menu
 	echo '
@@ -211,6 +211,7 @@ function template_theme_userarea()
 			<li>
 				<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) || $context['current_action'] == 'unread'  || $context['current_action'] == 'unreadreplies' ? ' class="active"' : '', ' id="profile_menu_top">
 					', $context['user']['avatar']['image'], '
+					<span class="textmenu">', $context['user']['name'], '</span>
 				</a>
 				<div id="profile_menu" class="top_menu"></div>
 			</li>';
@@ -230,10 +231,21 @@ function template_theme_userarea()
 			<li>
 				<a href="', $scripturl, '?action=profile;area=showalerts;u=', $context['user']['id'], '"', !empty($context['self_alerts']) ? ' class="active"' : '', ' id="alerts_menu_top">
 					', themecustoms_icon('fa fa-bell'), !empty($context['user']['alerts']) ? ' <span class="amt">' . $context['user']['alerts'] . '</span>' : '', '
-					<span class="textmenu">', $txt['alerts'], '</span>
 				</a>
 				<div id="alerts_menu" class="top_menu scrollable"></div>
 			</li>';
+
+		// Language selection
+		if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
+		{
+			echo '
+			<li>
+				<a href="', $scripturl, '?action=profile;area=account" id="language_menu_top">
+					', themecustoms_icon('fa fa-language'), '	
+				</a>
+				', themecustoms_languageselector(), '
+			</li>';
+		}
 
 		// A logout button for people without JavaScript.
 		echo '
@@ -372,12 +384,7 @@ function theme_linktree($force_show = false)
 
 	echo '
 				<div class="navigate_section">
-					<ul>
-						<li class="trigger">
-							<a href="javascript:void(0);">
-								', themecustoms_icon('fa fa-bars'), '
-							</a>
-						</li>';
+					<ul>';
 
 	// Each tree item has a URL and name. Some may have extra_before and extra_after.
 	foreach ($context['linktree'] as $link_num => $tree)
@@ -639,7 +646,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 			$html .= '
 				<a href="' . (!empty($li['href']) ? $li['href'] : 'javascript:void(0);') . '"' . (!empty($li['javascript']) ? ' ' . $li['javascript'] : '') . '>
 					' . (!empty($li['icon']) ? '<span class="main_icons ' . $li['icon'] . '"></span>' : '') .  '
-					<span>' . (!empty($li['label']) ? $li['label'] : '') . '</span>
+					<span class="label">' . (!empty($li['label']) ? $li['label'] : '') . '</span>
 				</a>
 				' . (!empty($li['extra_content']) ? $li['extra_content'] : '');
 

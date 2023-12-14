@@ -37,11 +37,16 @@ class Init extends Config
 	protected $_theme_details = [
 		'support' => [
 			'github_url' => 'https://github.com/SMFTricks/Endar',
-			// 'smf_site_id' => 3003,
-			// 'smf_support_topic' => 583206,
-			// 'custom_support_url' => 'https://smftricks.com/index.php?topic=1040.0',
+			'smf_site_id' => 3,
+			'smf_support_topic' => 76635,
+			'custom_support_url' => 'https://smftricks.com/',
 		],
 	];
+
+	/**
+	 * Like Button
+	 */
+	public static $_likes_quickbutton = false;
 
 	/**
 	 * Init::loadHooks()

@@ -53,9 +53,9 @@
 
 	/* New Button */
 		/* Background */
-		--newbutton-bg: linear-gradient(var(--catbg-bg), hsl(var(--primary-color-hue), 35%, 60%));
+		--newbutton-bg: var(--catbg-bg);
 		/* Color */
-		--newbutton-txt-color: hsl(var(--primary-color-hue), 30%, 95%);
+		--newbutton-txt-color: var(--titlebg-txt-color);
 
 	/* Catbg */
 		/* Background */
@@ -120,15 +120,16 @@
 
 	/* Main Nav Drodown */
 		/* Background */
-		--nav-dropdown-bg: hsl(0, 0%, 97%);
+		--nav-dropdown-bg: hsl(var(--primary-color-hue), 35%, 90%);
 
 	/* Main Nav Drodown Items */
 		/* Background */
 		--nav-dropdown-item-bg: transparent;
-		--nav-dropdown-item-bg-hover: var(--nav-item-bg-active);
+		--nav-dropdown-item-bg-hover: hsl(var(--primary-color-hue), 35%, 85%);
+		--nav-dropdown-item-bg-active: hsl(var(--primary-color-hue), 40%, 85%);
 		/* Color */
-		--nav-dropdown-item-txt-color: hsl(0, 0%, 12%);
-		--nav-dropdown-item-txt-color-hover: hsl(0, 0%, 100%);
+		--nav-dropdown-item-txt-color: hsl(var(--accent-color-hue), 15%, 25%);
+		--nav-dropdown-item-txt-color-hover: hsl(var(--accent-color-hue), 35%, 20%);
 
 	/* Button List */
 		/* Background */
@@ -158,7 +159,7 @@
 		/* Background */
 		--poster-bg: hsl(var(--primary-color-hue), 25%, 88%);
 		/* Width */
-		--poster-width: 185px;
+		--poster-width: 215px;
 
 	/* Status Colors */
 		/* Sticky */
@@ -184,7 +185,7 @@
 
 	/* Other Sections */
 		/* Background */
-		--uppersection-bg: hsl(0, 0%, 90%);
+		--uppersection-bg: hsl(var(--accent-color-hue), 35%, 65%);
 		--forumsections-bg: var(--content-section-bg);
 
 	/* Forum News */
@@ -265,10 +266,10 @@
 
 	/* Quote */
 		/* Border */
-		--quote-border-color: hsl(var(--primary-color-hue), 35%, 65%);
+		--quote-border-color: hsl(var(--primary-color-hue), 25%, 75%);
 		/* Background */
-		--quote-bg: hsl(var(--primary-color-hue), 5%, 90%);
-		--qutoe-alternate-bg: hsl(var(--primary-color-hue), 10%, 85%);
+		--quote-bg: hsl(var(--primary-color-hue), 30%, 90%);
+		--qutoe-alternate-bg: hsl(var(--primary-color-hue), 22%, 84%);
 
 	/* Code */
 		/* Border */
