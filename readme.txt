@@ -1,7 +1,7 @@
 [center][url="https://smftricks.com/"][img]https://smftricks.com/logos/logo.png[/img][/url]
 Free & Premium Themes for SMF
 
-[img]https://i.imgur.com/Qa54RGZ.gif[/img][/center]
+[img]https://raw.githubusercontent.com/SMFTricks/Endar/main/src/preview.png?token=GHSAT0AAAAAACDYJLAGCJFTNSCQFFVXFULAZQV3JZA[/img][/center]
 
 [img]https://img.shields.io/badge/License-MIT-248049[/img] [img]https://img.shields.io/badge/SMF-2.1-3f73a0[/img] [img]https://img.shields.io/badge/Responsive-Yes-6e97e1[/img] [img]https://img.shields.io/badge/Color%20Variants-Yes-6041a3[/img] [img]https://img.shields.io/badge/Dark%20Mode-Yes-4d827f[/img] [img]https://img.shields.io/badge/RLT%20Support-Yes-bf9d73[/img]
 
