@@ -509,6 +509,9 @@
 
 @media (max-width: 767px)
 {
+	header::before {
+		display: none;
+	}
 	#info_center .info-block {
 		grid-template-columns: 25px 1fr;
 	}

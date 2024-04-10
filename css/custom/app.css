@@ -148,6 +148,20 @@ header {
 	padding-block: 1em;
 	min-height: 130px;
 	box-shadow: var(--header-box-shadow);
+	position: relative;
+}
+header::before {
+	background-image: url('../../images/theme/sword.png');
+	background-position: right center;
+	background-repeat: no-repeat;
+	background-blend-mode: hard-light;
+	content: "";
+	height: 100%;
+	inset-inline-end: 1em;
+	inset-block: 0;
+	opacity: 0.5;
+	position: absolute;
+	width: 105px;
 }
 header h1.forumtitle {
 	align-self: center;
@@ -155,6 +169,8 @@ header h1.forumtitle {
 	font-size: 2.75em;
 	font-family: 'Noto Sans', 'Helvetica', 'Arial';
 	line-height: 1;
+	position: relative;
+	z-index: 1;
 }
 header h1.forumtitle a {
 	text-decoration: none;
@@ -172,6 +188,8 @@ header h1.forumtitle a {
 	padding: 0.5em;
 	border-radius: 4px;
 	opacity: 0.9;
+	position: relative;
+	z-index: 1;
 }
 .social_icons:is(:hover, :focus-within), .social_icons:has(a:hover) {
 	opacity: 1;
