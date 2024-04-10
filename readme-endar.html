@@ -1,0 +1,676 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Endar 1.0.8 Readme </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+body {
+font-family: Verdana, Arial, Helvetica, sans-serif;
+background-color: #333333;
+margin:0;
+padding:0;
+text-align:center;
+}
+h1 {
+color: #CCCCCC;
+font-size: 120%;
+font-weight: bolder;
+font-variant: normal;
+background-color: #666666;
+padding: 4px;
+border-bottom: 4px solid #7FAD88;
+margin-top:10px;
+}
+h2, h3, h5, h4, h6 {
+margin: 20px 0;font-size: 84%;
+}
+.title a:link, .title a:visited, .legal-title, .subtitle, .important a {
+color: #CCCCCC;
+font-weight: bold;
+background: #666666;
+padding: 4px;
+border: solid #7FAD88;
+border-width: 0 0 4px 0;
+margin: 20px 0;
+display:block;
+text-decoration:none;
+}
+.legal-title, .important a:link, .important a:visited {
+border: solid #AD7F8E;
+border-width: 0 0 4px 0;
+color: #CCCCCC;
+}
+.title a:hover, .important a:hover {
+background: #333333;
+color: #7FAD88;
+}
+.subtitle {
+font-size: 80%;
+border: solid #aeaeae;
+border-width: 0 0 4px 0;
+}
+.important-block .subtitle {
+border: solid #AD7F8E;
+border-width: 0 0 4px 0;
+}
+p, dt {
+font-size: 75%;
+}
+li {
+margin:8px 0;
+}
+ul {
+list-style-type: square;
+}
+ol{
+list-style-type: disc;
+}
+a:link,a:active,a:visited {
+color : #6CA075;
+text-decoration: none;
+font-weight: bold;
+  }
+a:hover { 
+text-decoration: none; color : #7FAD88; 
+}
+#content {
+width: 600px;
+margin:20px auto;
+background-color: #CCCCCC;
+padding: 0 10px;
+text-align:left;
+border: 5px double #999999;
+}
+#legal, .important-block {
+background-color: #DBBBC5;
+padding: 0 10px;
+border: 2px solid #AD7F8E;
+margin: 0 10px;
+}
+#legal a, important-block a {
+color: #905E71;
+}
+#legal p, .important-block p {
+margin:10px 0;
+font-size: 70%;
+}
+#info, #logo, #install, #width, #help, #changelog, #lang {
+background-color: #BDBDBD;
+padding: 0 10px;
+border: 2px solid #666666;
+margin: 0 10px;
+}
+#info p, #logo p, #install p, #width p, #help p, #changelog p, #lang p {
+margin:10px 0;
+font-size: 70%;
+word-spacing:.1em;
+line-height:1.4em
+}
+.float-right{
+float:right;
+}
+.float-right a:link{
+color: #7FAD88;
+}
+.button a:link, .button a:visited {
+border:solid #FF9900;
+border-width:2px 0 0 0;
+padding:1px 4px;
+background: #666666;
+color: #cccccc;
+font-weight: bold;
+display:block;
+margin-top:40px;
+}
+.button a:hover {
+border: solid #7FAD88;
+border-width:2px 0 0 0;
+text-decoration:none;
+color: #cccccc;
+}
+.button{
+text-align: center;
+}
+pre {
+background: #ccc;
+width: 540px;
+overflow :auto;
+margin:4px auto;
+height:200px;
+border:2px solid #666;
+padding:4px;
+font-family: monospace;
+}
+#copy-r {
+font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+background: #666666;
+color: #999999;
+text-align:center;
+padding:2px 4px;
+font-size: 60%;
+font-variant: small-caps;
+letter-spacing: 1px;
+border: 2px solid #999999;
+border-width: 2px 0;
+margin: 4px 0;
+}
+#copy-r a {
+color: #999;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+// Do we use DOM or not?
+var dom = (document.getElementById && !document.all)? 1: 0;
+
+function show_hide(the_id)
+{
+var obj = (dom)? document.getElementById(the_id): document.all[the_id];
+
+if(obj.style.display == "block"){ // show
+  obj.style.display = "none";
+}
+else { // hide
+  obj.style.display = "block";
+}
+}
+
+
+if (document.getElementById && document.createTextNode){canDOM=true}
+function collapse(id){
+if (canDOM && document.getElementById(id)){
+elm=document.getElementById(id);
+elm.style.display=elm.style.display=='none'||elm.style.display==''?'block':'none';
+}
+}
+if (canDOM){
+document.write('<style type="text/css">#info{display:none;} #changelog{display:none} #logo{display:none} #install{display:none} #help{display:none} #width{display:none} #iemac{display:none;} #lang{display:none;}<\/style>')
+}
+
+function toggleLayer(whichLayer)
+{
+if (document.getElementById)
+{
+// this is the way the standards work
+var style2 = document.getElementById(whichLayer).style;
+style2.display = style2.display? "":"block";
+}
+else if (document.all)
+{
+// this is the way old msie versions work
+var style2 = document.all[whichLayer].style;
+style2.display = style2.display? "":"block";
+}
+else if (document.layers)
+{
+// this is the way nn4 works
+var style2 = document.layers[whichLayer].style;
+style2.display = style2.display? "":"block";
+}
+}
+//-->
+</script>
+</head>
+<body>
+<div id="content">
+
+<h1>Endar Template version: 1.0.8 for SMF 1.1.12</h1> 
+<p><strong>v1.0.8 (13th version.) 4th Novemeber 2010 &copy; <a href="http://endar.org" target="_blank">www.Endar.org</a></strong></p>
+<p>This file contains both important and helpful information. For use with the, Endar, SMF template created by Jasidog.com</p>
+
+<h2 class="legal-title"><strong>Terms of Use</strong></h2>
+<div id="legal">
+<p>This template is provided free of charge for both personal and commercial use.
+However it is <strong>not</strong> under an open source licence. There are restrictions to it's usage.</p>
+<p>These restrictions are few and are as follows.</p>
+<ul>
+<li><p>All style and graphics are copyright <a href="http://endar.org" target="_blank">www.Endar.org</a> and must not be 
+reused in other works without permissions.</p></li>
+<li><p>Neither the code or files from this downloaded template package, nor derivatives of, can be redistributed without permissions.</p></li>
+<li>
+<p>The theme copyright, information and any links in the template footer <strong>must not</strong> be removed or edited without permission.
+This includes any code (X/HTML).<br /><br />
+<em>Hue, colour and image changes to the copyright text and footer. To tie in with any of your own modifications to the template/theme are permissible. Provided they don't obscure the visibility of the copyright information.</em>
+</p>
+</li>
+<li><p>This template/skin is provided "as is". Use of this template or it's constituent parts is entirely at your own risk.
+The template has been tested for deficiencies but responsibility will not be accepted for any problems resulting from the use of this skin.</p></li>
+</ul>
+<p>Keeping in mind the above. You can edit and change this template in any way you please. Should you wish clarification on these matters or 
+to be given permission to distribute to others a derivative template, remove copyright info, etc. Then please 
+<a href="mailto:miraenda@gmail.com" title="Restrictions questions to Miraenda.">get in touch</a>.
+</p>
+</div>
+
+<h3 class="title"><a href="javascript:toggleLayer('changelog');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Change Log</a></h3>
+<div id="changelog">
+<dl>
+<dt><strong>Beta 1  [1st of August 2005]</strong></dt>
+<dd><p>First public release, beta, due to expected bugs.</p></dd>
+<dt><strong>Beta 2 [26th of August 2005]</strong></dt>
+<dd>
+<p>(Private) release . Decided to keep public releases only along side public versions of SMF 1.1</p>
+<ul>
+<li><p>Clear added to newsbox as long news overflowed outside box when viewing as guest.</p></li>
+<li><p>Some small XHTML errors fixed</p></li>
+<li><p>All files updated with the requisit changes for SMF 1.1 Beta 4. Far too many to mention.</p></li>
+</ul>
+</dd>
+<dt><strong>RC1 [21st of September 2005]</strong></dt>
+<dd>
+<p>Second public release. Decided to call it RC1 to make it more obvious which version of SMF 1.1 it was created for.</p>
+<ul>
+<li><p>Fixed a problem with quick reply functionality due to a form within a form.</p></li>
+<li><p>Changed the majority of small font sizes in the admin panel to be more ledgible. The CSS for this also effects the calendar.</p>
+<p><em>Will probably review smallest font size theme wide at a later date.</em></p></li>
+<li><p>All files updated with the requisit changes for SMF 1.1 RC1.</p></li>
+</ul>
+</dd>
+<dt><strong>RC2 [4th of January 2006]</strong></dt>
+<dd>
+<p>Third public release. Called RC2 to make it more obvious which version of SMF 1.1 it was created for.</p>
+<ul>
+<li><p>Updated for full functionality with SMF 1.1 RC2 public.</p></li>
+<li><p>French language graphics included.</p></li>
+</ul>
+</dd>
+<dt><strong>RC3 [25th August 2006]</strong></dt>
+<dd>
+<p>Fourth public release. For SMF 1.1 rc3</p>
+<ul>
+<li><p>Updated for full functionality with SMF 1.1 RC3.</p></li>
+<li><p>Fixed bug introduced in PM message display at last version.</p></li>
+<li><p>Fix bug where the link for memberlist searching was messed up and unfunctional at last version.</p></li>
+<li><p>Fix error message recieved in admin error listings due to posticon selector being missing.</p></li>
+<li><p>Fix error message recieved in admin error listings due to guest viewing who's online.</p></li>
+<li><p>Fix HTML mistakes in userCP</p></li>
+<li><p>CSS changes for IE7 rendering</p></li>
+</ul>
+</dd>
+<dt><strong>v.1.0 [4th December 2006]</strong></dt>
+<dd>
+<p>Fifth public release. For SMF 1.1</p>
+<ul>
+<li><p>Updated for full functionality with SMF 1.1 final.</p></li>
+<li><p>Fix for failed avatar uploads regression in last version.</p></li>
+<li><p>CSS changes for IE7 rendering</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.1 [3rd March 2007]</strong></dt>
+<dd>
+<p>Sixth public release. For SMF 1.1.2</p>
+<ul>
+<li><p>Updated for full functionality with SMF 1.1.2 final.</p></li>
+<li><p>Fixed issues in PersonalMessage.template.php</p>
+	<ol>
+	<li><p>Duplicate form start tag, A line added rather than replaced in last upgrade.</p></li>
+	<li><p>Missing border on PM edit/posting screen</p></li>
+	<li><p>Missing closing DIV tag on post-foot DIV of every PM if there was no report post button visible</p></li>
+	</ol>
+	<p>Thanks to bubu from <a href="http://prophezine.apinc.org">prophezine</a> for the bug reports.</p>
+</li>
+<li><p>Images and alternayte stylesheet for right to Left based language users added. Details included in this readme.</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.2 [25th June 2007]</strong></dt>
+<dd>
+<p>Seventh public release. For SMF 1.1.3</p>
+<ul>
+<li><p>Fixed intermittant errors with quick edit function (display.template.php).</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.3 [29th June 2007]</strong></dt>
+<dd>
+<p>Eighth public release. For SMF 1.1.3</p>
+<ul>
+<li><p>Fixed error report in logs for editing polls (poll.template.php)</p></li>
+<li><p>Fixed error log report in help page introductory section.(help.template.php)</p></li>
+<li><p>Fixed faulty markup in posting section of (help.template.php)</p></li>
+<li><p>Fixed stats page monthly view ajax issue (stats.template.php)</p></li>
+<li><p>Small change to profile signature HTML to aid a user using some custom javascript (profile.template.php)</p></li>
+<li><p>Change to signature markup  in posts and private messages due to issue with BBcode centered signatures. Which causes invalid markup and thus a display issue. (display.template.php, PersonalMessage.template.php)</p></li>
+<li><p>Change to post body text markup in PMs and recent posts to allow global changing of post font sizes only by CSS if people choose so.  (Recent.template.php , PersonalMessage.template.php )</p></li>
+<li><p>Invalid HTML in messages/topics display. (MessageIndex.template.php)</p></li>
+</ul>
+<p>Detailed changelog at <a href="http://jasidog.com/forums/index.php?s=&amp;showtopic=1529&amp;view=findpost&amp;p=45573" title="detailed changelog for v1.0.3">posted at the jasidog forums</a>.</p>
+</dd>
+
+<dt><strong>v.1.0.4 [21st January 2008]</strong></dt>
+<dd>
+<p>Ninth public release. For SMF 1.1.3/1.1.4</p>
+<ul>
+<li><p>Fixed error report in logs for guests posts trying to show member group stars when this should havve been filtered out for guests. (display.template.php)</p></li>
+<li><p>Fixed error report in logs for member trying to delete account (profile.template.php lines, 1669 and 1681.).</p></li>
+<li><p>Fixed error report in logs which appeared if a PM from a deleted member was viewed.(PersonalMessage.template.php).</p></li>
+<li><p>Fixed textarea alignment problem when sending PM in IE7 (style.css line 958ish).</p></li>
+<li><p>Fixed malformed HTML (Calendar.template.php).</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.5 [15th April 2008]</strong></dt>
+<dd>
+<p>Tenth public release. For SMF 1.1.3/1.1.4</p>
+<ul>
+<li><p>Send topic page had validation error due to a closing TR tag that was somehow left in the page. (SendTopic.template.php line 55)</p></li>
+<li><p>Right to left based language support improved some. (style-rtl-text.css)</p></li>
+<li><p>Right to left language style sheet auto selected, no need now to replace the default CSS file manually. (index,template.php line 83) </p></li>
+<li><p>Hard coded style removed from stats page. (Stats.template.php line 32)</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.6 [15th July 2009]</strong></dt>
+<dd>
+<p>Eleventh public release. For SMF 1.1.10</p>
+<ul>
+<li><p>Register.template.php updated for SMF 1.1.10 compatibility</p></li>
+<li><p>Recent.template.php update missed from previous release.</p></li>
+<li><p>If you need to see the exact changes please make a diff comparison.</p></li>
+</ul>
+</dd>
+
+<dt><strong>v.1.0.7 [2nd December 2009]</strong></dt>
+<dd>
+<p>Twelfth public release. For SMF 1.1.11</p>
+<p>SplitTopics.template.php updated for SMF 1.1.11 compatibility.</p>
+<p>Line added, line 342</p>
+</dd>
+
+<dt><strong>v.1.0.8 [4th November 2010]</strong></dt>
+<dd>
+<p>Thirteenth public release. For SMF 1.1.12</p>
+<ul>
+<li><p>Display.template.php updated for SMF 1.1.12 compatibility. (Line altered, line 601)</p></li>
+<li><p>Reply to all function missing from personal messaging. (PersonalMessage.template.php line 371. Also button image added for this in /Themes/endar/english/ or the appropiate language.)</p></li>
+</ul>
+</dd>
+
+</dl>
+
+<p class="button"><a href="javascript:toggleLayer('changelog');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h4 class="title"><a href="javascript:toggleLayer('install');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Installation</a></h4>
+<div id="install">
+<p class="subtitle">Installation Instructions</p>
+
+
+<p>Installing this skin is, or should be, easy.</p>
+
+<ol>
+<li><p>Go to your SMF admin panel >> "Configuration" >> "Themes and Layout"</p></li>
+<li><p>Scroll down the page a until you see the section <strong>"Install a New Theme"</strong>.</p></li>
+<li><p>Now where it says: <strong>"From a file:"</strong>. click the browse button.</p></li>
+<li><p>Browse and find the Endar.zip file you downloaded and select it. Then hit the install button.</p></li>
+</ol>
+
+<p>Congratulations, the skin has been installed and is ready for your members to use.</p>
+<p class="button"><a href="javascript:toggleLayer('install');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h5 class="title"><a href="javascript:toggleLayer('info');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>General information</a></h5>
+<div id="info">
+<p class="subtitle"><strong>An explanation</strong></p>
+<p>Endar was made as a custom template for Miraenda (Whom many of you in the SMF community may know.) the owner 
+and admin of <a href="http://endar.org" title="The site for which Endar was made">www.Endar.org</a>.</p>
+<p>It was Miraenda's very generous decision to release the template to the community. So should you want to 
+show any gratitude for this template, well then you know to whom that thanks is deserved.</p>
+<p>Endar is constructed without the use of tables except for a few specific areas.</p>
+
+<ul>
+<li>
+<p>The calendar, whilst the rest of the board had at least a plausibly sematic table free rendition. 
+I couldn't think of another way to do the Calendar.</p>
+</li>
+<li><p>The "SMF Bulletin Board Code" Table in the "Posting" help section. For similar reasons to the calendar.</p></li>
+<li>
+<p>The whole admin panel which other than CSS styling has not been altered whatsoever, this seemed prudent.</p>
+</li>
+<li>
+<p>The last content block (Forum History.) in the board stats page. This due to my own lack of javascripting knowledge. 
+It did work as a detailed list but only with javascript turned off. Where a page reload allowed the display to update correctly. 
+A little more effort or knowledge on my part may remedy that.</p>
+</li>
+<li><p>The split posts mod panel for the same reasons as mentioned regarding the "Forum History" section of the stats.</p></li>
+</ul>
+
+<p>The decision to dispense with the use of tables, is not any sort of statement on semantics or accessibility. 
+I'm an advocate of accessibility but if this template was made with that as the top priority. There would have 
+been wider use of tables in the mark up.</p>
+<p>Forums, at least the more popular feature crammed variety, like SMF are full of information which can be best 
+described semantically using tables. They're chock full of tabular data. I know this.</p>
+<p>That said I did try to follow standards and make it as semantically correct as I could. Though I fell down in several areas, I'm sure. 
+There are some hard coded bits of style for example. Other failings will be due to my own limits on knowledge.</p>
+<p>There are also some areas where I would perhaps choose a different mark up now that they're done. Perhaps these will be revisited but no promises.</p>
+
+<p class="subtitle"><strong>Browser compatibility</strong></p>
+
+<p>Endar appears to works well in modern browsers that keep good pace with standards. We're talking Gecko engined browsers 
+like <a href="http://getfirefox.com" title="download a decent browser">Firefox</a>. As well as <a href="http://opera.com" title="download a decent browser">Opera</a> and <a href="http://www.apple.com/safari/" title="download the Apples's Safari">Safari</a>. The new IE7 does pretty well too.</p>
+<p>Last I was able to check Konqueror worked decently enough too.</p>
+<p>Internet explorer in all it's previous to IE7 incarnations was a different matter. A huge chunk of the stylesheet is devoted 
+to hacks intended to make things work in the various flavours of IE. However, though I'd suggest using a different 
+browser if at all possible. A lot of time spent means that it does work in IE version 5 and upwards, best in 6.</p>
+<p>IE 5.0 worst. However it is perfectly usable last I checked</p>
+<p>IE on the Mac I have no idea about, I may even hide the stylesheet from it in a later version of the theme.</p>
+<p>Due to the nature of the template, it required that the vast majority of the XHTML was written from scratch. There's 
+not much left of the original default HTML left. This means that despite my own testing there will doubtless be bugs 
+which live use will show up.</p>
+<p> If you find any you believe important enough to report you can do so at <a href="http://jasidog.com/forums/index.php?showforum=11" title="jasidog templates subforum"><strong>The Jasidog forums</strong></a>.</p>
+<p class="button"><a href="javascript:toggleLayer('info');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h6 class="title"><a href="javascript:toggleLayer('logo');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Making your own logo/Header/Footer</a></h6>
+<div id="logo">
+<p class="subtitle"><strong>Basic Customisation</strong></p>
+<p>You may already have downloaded a zip archive called "endar-psds". If not you will need to download this in order to customise
+your header and footer. If you don't already have it <a href="http://jasidog.com/file_download/7" title="grab the PSD files">download the PSD files</a>.</p>
+<p>In this zip file is a sliced PSD of the logo/header and also one for the footer. Presuming you have photoshop 
+you can use these to add your own text and/or images.</p>
+<p>Then simply place the images in the, <strong>Themes/Endar/Images/</strong> directory of your
+message board.</p>
+<p><em>Note both the header and footer PSD files are missing layers/images from the default header and footer.
+These layers are those with Characters from The World of Endar. Which missing as they are specific to the Endar.org site.</em></p>
+<p>The PSD files were also somewhat simplified (layers merged etc.) in order to try and keep the file sizes down.</p>
+<p><em>Should you be without photoshop or having difficulties you can ask for help or the adding of your logo text at <a href="http://jasidog.com/forums/index.php?showforum=11" title="jasidog templates subforum"><strong>The Jasidog forums</strong></a>.</em></p>
+<p>It's also planned to add a separate download in future with a more generic Header and footer PSD. If it doesn't materialise you can always give me a prod.</p>
+<p class="subtitle"><strong>Header Details</strong></p>
+
+<p><em>Note that the border graphics in the logo PSD, top and sides must be included in your new header. 
+As they join up with. Are part of the whole graphical border round the board.</em></p>
+<p>This was perhaps not a wise move for those customising but things weren't done with that in mind.</p>
+<p>If you alter the height or the image types used, say PNG files instead of GIF. If Indeed  you want to make more drastic c
+changes you'll need to edit the css file. Either by opening the file ( Endar/style.css ) or using the admin panel editor.</p>
+<p><strong>Look for this section to make your changes in - </strong></p>
+
+
+<pre>
+<code>
+/* header section */
+
+#header {
+background: #E2DBBF url(images/head-tile.gif) repeat-x top;
+}
+#header-right {
+background: url(images/head-right.gif) no-repeat top right;
+}
+#logo a {
+margin: 0;
+padding: 0;
+background: url(images/logo.gif) no-repeat left top;
+display:block;
+text-decoration: none;
+padding: 114px 0 0 0;
+overflow: hidden;
+height: 0px !important; 
+height /**/:114px; /* for IE5/Win only */
+}
+</code>
+</pre>
+
+<p>The "#header" section is where the image that titles across the header background is defined. "#head-right" 
+is the image on the far right of the header and "#logo a" the corresponding image on the left (The logo).</p>
+<p>Most important is "#logo a" this is for your logo and also crucially it gives the overall 
+height of the header. <strong>This is defined in two places.</strong></p>
+<p>Both in "<strong>padding: 114px 0 0 0;</strong>" where the value "<strong>114px</strong>" should be replaced with your header 
+height in pixels.</p>
+<p>And in "<strong>height /**/:114px; /* for IE5/Win only */</strong>", only change the pixel value none of the surrounding comment. 
+This defines the header height for Internet Explorer 5.</p>
+<p>If you know enough CSS to understand the rest you really don't need to be reading this and can change the 
+whole thing much further under your own steam. Including changing the HTML in the "index.template.php" if need be.</p>
+
+<p class="subtitle"><strong>Footer Details</strong></p>
+
+<p><em>Note that the border graphics in the footer PSD, bottom and sides must be included in your new footer. 
+As they join up with. Are part of the whole graphical border round the board.</em></p>
+
+<p>If you alter the height or the image types used, say PNG files instead of GIF. If Indeed  you want to make more drastic c
+changes you'll need to edit the css file. Either by opening the file ( Endar/style.css ) or using the admin panel editor.</p>
+<p><strong>Look for this section to make your changes in - </strong></p>
+
+
+<pre>
+<code>
+/* footer */
+
+#footer {
+background: #E2DBBF url(images/foot-tile.gif) repeat-x top;
+margin-top: -1px; /* fixes intermitant (resolution dependant) bug */
+}
+#foot-left {
+background: url(images/foot-left.gif) no-repeat top left;
+}
+#foot-right {
+background: url(images/foot-right.gif) no-repeat top right;
+height:219px;
+}
+</code>
+</pre>
+
+<p>The "#footer" section is where the image that titles across the footer background is defined. "#foot-right" 
+is the image on the far right of the header and "#foot-left" the corresponding image on the left.</p>
+<p>Most important is "#foot-right" as crucially it gives the overall 
+height of the footer.</p>
+<p>Where the value "<strong>height:219px;</strong>" is given you should replace if need be with your footer 
+height in pixels.</p>
+<p>Again if you know enough CSS to understand the rest you really don't need to be reading this and can change the 
+whole thing much further under your own steam. Including changing the HTML in the "index.template.php" if need be.</p>
+
+<p><strong>An important note on the footer.</strong></p>
+
+<p>Should you find that after customising your footer the board copyright information floats over the 
+bottom edge of the footer. This will be because of some alteration to the height of the slices. If it happens
+it will not be something visible in IE but in other browsers. To fix. look for the following in the CSS file.</p>
+
+<pre>
+<code>
+.copy-r {
+font-family: Verdana,Arial,sans-serif;
+color: #E8E1C7;
+text-align:center;
+font-size: 90%;
+margin-top:-10px;
+padding-bottom: 10px;
+font-weight: bold;
+background-color: transparent;
+}
+</code>
+</pre>
+
+<p>Change that to - </p>
+
+<pre>
+<code>
+.copy-r {
+font-family: Verdana,Arial,sans-serif;
+color: #E8E1C7;
+text-align:center;
+font-size: 90%;
+margin-top:0;
+padding-bottom: 10px;
+font-weight: bold;
+background-color: transparent;
+}
+</code>
+</pre>
+
+<p class="button"><a href="javascript:toggleLayer('logo');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h6 class="title"><a href="javascript:toggleLayer('width');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Changing the overall forum width</a></h6>
+<div id="width"><p>To alter the forum width is pretty painless. Endar is set at 94% of the page width by default. 
+So it's fluid but you could use a fixed width, pixel value.</p>
+<p>To change it all you need to do is open up the Endar CSS from the admin panel or even easier the CSS file 
+it's self. The <strong>"style.css"</strong> is located in the Endar template folder.</p>
+<p><em>Your-SMF-Install/Themes/Endar/style.css</em></p>
+<p>Look for the following - </p>
+
+<pre>
+<code>
+/* overall width of forum */
+#wrapper {
+padding:2% 0 0 0;
+margin:0px auto;
+width:94%;
+text-align:left;
+}
+</code>
+</pre>
+
+<p>Where it says "width:94%" edit the percentage value to suit. So for example if you 
+wanted an overall width of 80% for the forum. You would change it to the following.</p>
+
+<pre>
+<code>
+/* overall width of forum */
+#wrapper {
+padding:2% 0 0 0;
+margin:0px auto;
+width:80%;
+text-align:left;
+}
+</code>
+</pre>
+
+<p>If you wanted a fixed width (Say 750px.) you would change it as follows.</p>
+
+<pre>
+<code>
+/* overall width of forum */
+#wrapper {
+padding:2% 0 0 0;
+margin:0px auto;
+width:750px;
+text-align:left;
+}
+</code>
+</pre>
+
+<p>Easy eh?</p>
+
+<p class="button"><a href="javascript:toggleLayer('width');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h6 class="title"><a href="javascript:toggleLayer('lang');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Languages</a></h6> 
+<div id="lang">
+<p>French language graphics come with the package and so, provided you already have the French language pack for the SMF default theme installed, it should work fine.</p>
+<p>If you want to create your own language graphics you can do so. Just get in touch and resources or help will be provided.</p>
+<p class="button"><a href="javascript:toggleLayer('lang');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+
+<h6 class="title"><a href="javascript:toggleLayer('help');" title="Show/Hide the section, if no javascript will be visible by default"><span class="float-right">+/-</span>Support and updates</a></h6> 
+<div id="help">
+<p>If you need any problems and need help or have questions about the Endar template you can ask at 
+<a href="http://jasidog.com/forums/index.php?showforum=11" title="jasidog templates subforum"><strong>The Jasidog forums</strong></a></p>
+<p>The best place to look for updates or addons to the theme is <a href="http://jasidog.com/smf/">the SMF section on the Jasidog site</a>.</p>
+<p class="button"><a href="javascript:toggleLayer('help');" title="Not usable without javascript">Hide this section</a></p>
+</div>
+<p id="copy-r"><strong>Readme design and content &copy; <a href="http://jasidog.com">Jasidog.com</a>  2005 - 2007, All rights reserved</strong></p>
+</div>
+</body>
+</html>

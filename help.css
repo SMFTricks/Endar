@@ -1,0 +1,188 @@
+
+p
+{
+	margin: 0 0 1.5em 0;
+}
+
+div.footer
+{
+	text-align: center;
+	color: #6f6f6f;
+	padding: 3px;
+}
+#menu
+{
+	line-height: 1;
+}
+#menu p
+{
+	margin: 0 0 1em 0;
+	line-height: 2;
+}
+
+ol.la
+{
+list-style-type: lower-alpha;
+}
+#usernav #selected {
+color:#990000;
+}
+
+ul.bullit-list {
+padding-bottom:20px;
+}
+.help-example {
+padding: 15px; 
+border: 1px dashed #AD9C82;
+margin:20px 3%;
+}
+.help-example ul.bullit-list{
+padding-bottom:0px;
+}
+.help-example p {
+margin:0;
+}
+.subtitle {
+clear:none;
+}
+ 
+.help-title,
+.help-subtitle {
+background: #E2DBBF url(images/nav-bot.gif) repeat-x bottom;
+padding:4px 0 31px 0;
+margin: 30px 0 10px 0;
+font-weight:bold;
+font-size:130%;
+letter-spacing: 1px;
+border-top: 1px dashed #AD9C82;
+color : #553A00;
+}
+h1.help-title {
+margin-top:0px;
+}
+.help-subtitle {
+background: #CEC4A9 none;
+padding:2px 0 2px 5px;
+font-size:100%;
+border: 3px solid #AD9C82;
+border-width:0 0 3px 0;
+}
+
+/* to prevent duplicate ID's these copied from main CSS and changed to classes not nessisary anywhere 
+but the help pages due to examples repeating sections */
+
+.user-cp-left {
+width:230px;
+float:left;
+}
+.messages #user-cp-left {
+width:190px;
+}
+.user-cp-left ul {
+margin:0;
+padding:0;
+list-style: none;
+}
+
+.user-cp-left li a{
+border: 1px solid #AD9C82;
+margin:2px;
+display:block;
+padding:2px 30px 2px 2px;
+color: #553A00;
+background-color: #E2DBBF;
+}
+.user-cp-left li a:hover, 
+.user-cp-left li.selected a {
+background: url(images/cp-nav.gif) no-repeat top right;
+text-decoration:none;
+font-weight: bold;
+}
+/* Hide from mac IE \*/
+* html .user-cp-left li a {
+height:1px;
+}
+/* end hide from mac ie */
+
+
+
+/* hover effect on topic buttons */
+
+* html .topic-buttons-top a, 
+* html .topic-buttons-bot a,
+* html .topic-buttons-mod a,
+.topic-buttons-top a img, 
+.topic-buttons-bot a img, 
+.topic-buttons-mod a img {
+	background-color: #BFE2CA;
+}
+* html .topic-buttons-top a:hover, 
+* html .topic-buttons-bot a:hover,
+* html .topic-buttons-mod a:hover,
+.topic-buttons-top a:hover img, 
+.topic-buttons-bot a:hover img, 
+.topic-buttons-mod a:hover img{
+	background-color: #FFF9C5;
+}
+.topic-buttons-top .navPages:link, 
+.topic-buttons-bot .navPages:link, 
+.topic-buttons-mod .navPages:link,
+.topic-buttons-top .navPages:hover, 
+.topic-buttons-bot .navPages:hover, 
+.topic-buttons-mod .navPages:hover,
+.topic-buttons-top .navPages:visited, 
+.topic-buttons-bot .navPages:visited, 
+.topic-buttons-mod .navPages:visited {
+	background-color: transparent;
+}
+
+td {
+background-color: #E2DBBF;
+color:#553A00;
+}
+pre code {
+font-size:160%;
+}
+#helpmenu, 
+#helpmenu-bottom {
+margin:0 0 20px 0;
+}
+ul.help-menu {
+padding:0;
+margin:0;
+list-style:none;
+font-weight:bold;
+}
+ul.help-menu li {
+float:left;
+}
+ul.help-menu li a {
+float:left;
+border: 1px solid #AD9C82;
+border-width:1px 1px 0 1px;
+padding:2px 3px 1px 3px;
+margin:4px 3px 0 0;
+background: #E2DBBF url() repeat-x bottom;
+display:block;
+}
+ul.help-menu li a:hover {
+float:left;
+border: 1px solid #AD9C82;
+border-width:1px 1px 0 1px;
+padding:2px 3px 1px 3px;
+margin:0 3px 0 0;
+background: #E2DBBF url() repeat-x bottom;
+}
+ul.help-menu li.help-menu-active {
+float:left;
+padding:5px 6px 5px 6px;
+margin:-1px 3px -2px 0;
+border: 1px solid #9A8565;
+border-width:1px 1px 0 1px;
+background: #E2DBBF url() repeat-x bottom;
+}
+.help-menu-border {
+background: #E2DBBF url(images/nav-bot.gif) repeat-x bottom;
+clear:both;
+height:30px;
+}

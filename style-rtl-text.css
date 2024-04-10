@@ -1,0 +1,1124 @@
+/* CSS for Endar template for SMF 1.1.3 - 1.1.4 by Jasidog.com */
+
+p {
+font-family : Georgia, Verdana, Geneva, Arial, Helvetica, sans-serif;
+margin : 2px 0;
+padding : 0;
+text-indent : 0;
+color : #553A00;
+line-height:120%;
+}
+
+img {
+margin:0;
+padding:0;
+border:0;
+}
+/* Normal, standard links. */
+a:link, a:visited
+{
+	color: #378E59;
+	text-decoration: none;
+}
+a:hover
+{
+	color: #323232;
+	text-decoration: underline;
+}
+
+/* Navigation links - for the link tree. */
+.nav, .nav:link, .nav:visited
+{
+	color: #000000;
+	text-decoration: none;
+}
+a.nav:hover
+{
+	font-weight: bold;
+	color: #cc3333;
+	text-decoration: underline;
+}
+
+/* Tables should show empty cells. */
+table
+{
+	empty-cells: show;
+}
+
+/* By default (td, body..) use Tahoma in black. */
+td
+{
+	color: #553A00;
+	font-family : Georgia, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+/* The main body of the entire forum. */
+body
+{
+	background-color: #AD9C82;
+	color : #553A00;
+	margin: 0px;
+	padding: 0px;
+	font-size:70%;
+	font-family : Georgia, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+/* Input boxes - just a bit smaller than normal so they align well. */
+input, textarea, button
+{
+font-size: 12px;
+margin:0px 5px;
+padding:1px 4px;
+font-family: Georgia, tahoma, sans-serif;
+}
+textarea {
+margin:4px 0;
+text-align: right;
+}
+input {
+text-align: right;
+}
+.subtitle input.check,
+.dt input.check,
+.post-foot input.check, 
+.title input.check,
+.right input.check {
+margin:0;
+padding:0;
+}
+/* Hide from IE Mac \*/
+* html .subtitle input.check, 
+* html .right input.check {
+margin-top:-5px;
+margin-bottom:-3px;
+}
+/* End hide from IE mac */
+
+/* All input elements that are checkboxes or radio buttons. */
+input.check
+{
+margin:2px;
+padding:0;
+}
+
+/* Selects are a bit smaller, because it makes them look even better 8). */
+select
+{
+	font-size: 9pt;
+	font-weight: normal;
+	color: #000000;
+	font-family: Georgia, tahoma, sans-serif;
+	margin:0px 5px;
+}
+
+/* Standard horizontal rule.. ([hr], etc.) */
+hr, .hrcolor
+{
+	height: 1px;
+	border: 0;
+	color: #666666;
+	background-color: #666666;
+}
+
+/* A quote, perhaps from another post. */
+.quote
+{
+	background: url(images/quote-bot.gif) repeat-x bottom;
+	border:1px solid #AD9C82;
+	border-left: 1px solid #CBBFA5;
+	border-right: 1px solid #CBBFA5;
+	border-top:0px;
+	margin:0 15px 4px 15px;
+	padding: 4px 4px 10px 4px;
+	line-height: 1.4em;
+}
+
+/* A code block - maybe even PHP ;). */
+.code
+{
+	font-family: "courier new", "times new roman", monospace;
+	font-size:120%;
+	background: url(images/quote-bot.gif) repeat-x bottom;
+	border:1px solid #AD9C82;
+	border-left: 1px solid #CBBFA5;
+	border-right: 1px solid #CBBFA5;
+	border-top:0px;
+	margin:0 15px 4px 15px;
+	padding: 4px 4px 10px 4px;
+	line-height: 1.3em;
+	white-space: nowrap;
+	overflow: auto;
+	height: 200px;
+}
+
+/* Hid from IE mac |*/
+* html .code {
+	margin:0 auto;
+	width:95%;
+}
+/* End hack */
+
+/* The "Quote:" and "Code:" header parts... */
+.quoteheader, .codeheader
+{
+	background: url(images/quote-top.gif) repeat-x top;
+	text-decoration: none;
+	font-style: normal;
+	font-weight: bold;
+	border:1px solid #AD9C82;
+	border-left: 1px solid #CBBFA5;
+	border-right: 1px solid #CBBFA5;
+	margin:4px 15px 0 15px;
+	padding: 8px 4px 4px 4px;
+}
+
+/* Hid from IE mac |*/
+* html .codeheader {
+	margin:0 auto;
+	width:95%;
+}
+/* End hack */
+
+/* Generally, those [?] icons.  This makes your cursor a help icon. */
+.help
+{
+	cursor: help;
+}
+
+/* /me uses this a lot. (emote, try typing /me in a post.) */
+.meaction
+{
+	color: red;
+}
+
+/* The main post box - this makes it as wide as possible. */
+.editor
+{
+	width: 96%;
+}
+
+/* Highlighted text - such as search results. */
+.highlight
+{
+	background-color: yellow;
+	font-weight: bold;
+	color: black;
+}
+
+/* Alternating backgrounds for posts, and several other sections of the forum. */
+.windowbg
+{
+	color: #000000;
+	background-color: #E2DBBF;
+}
+.windowbg2
+{
+	color: #000000;
+	background-color: #E2DBBF;
+}
+
+/* These are used primarily for titles, but also for headers (the row that says what everything in the table is.) */
+.titlebg
+{
+font-family : Georgia, Verdana, Geneva, Arial, Helvetica, sans-serif;
+font-weight : bold;
+background-repeat : repeat-x;
+background-image: url(images/title.gif);
+background-position: top;
+margin:0;
+padding: 4px 6px 2px 6px;
+font-size:100%;
+color: #553A00; 
+border-bottom: 1px solid #A5D6B6;
+background-color: #BFE2CA;
+}
+tr.titlebg td {
+padding: 4px 6px 2px 6px;
+}
+.titlebg a:link, .titlebg a:visited {
+color: #553A00;
+}
+.titlebg a:hover
+{
+	color: #dfdfdf;
+}
+
+/* This is used for categories, page indexes, and several other areas in the forum. */
+.catbg
+{
+background: #BCAF97 url(images/subtitle.gif) repeat-x top;
+color: #666; 
+font-weight: bold; 
+letter-spacing: 1px;
+padding: 8px 4px 4px 4px;
+font-size:90%;
+}
+tr.catbg td {
+padding: 8px 4px 4px 4px;
+}
+/* This is used for a category that has new posts in it... to make it light up. */
+.catbg2
+{
+	background-image: url(images/catbg2.jpg);
+}
+
+.catbg, .catbg2
+
+{
+color: #666; 
+font-weight: bold; 
+letter-spacing: 1px;
+padding: 8px 4px 4px 4px;
+font-size:90%;
+}
+
+/* This is used for tables that have a grid/border background color (such as the topic listing.) */
+.bordercolor
+{
+	background-color: #AD9C82;
+}
+
+/* This is used on tables that should just have a border around them. */
+.tborder
+{
+	border: 1px solid #AD9C82;
+	background-color: #C8BCA1;
+	padding: 2px;
+}
+
+/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
+.smalltext
+{
+font-size: 93%;
+}
+.normaltext
+{
+	font-size: small;
+}
+.largetext
+{
+	font-size: large;
+}
+
+/* Posts and personal messages displayed throughout the forum. */
+.post, .personalmessage
+{
+	overflow: auto;
+	line-height: 160%;
+	color: #553A00;
+}
+* html .post {
+overflow: auto;
+width:100%;
+}
+
+/* All the signatures used in the forum.  If your forum users use Mozilla, Opera, or Safari, you might add max-height here ;). */
+.signature
+{
+clear:both;
+margin: 0;
+padding:10px 0 0 0;
+line-height: 130%;
+}
+.signature .sig-text {
+border-top: 1px dashed #948264;
+margin:0 192px 0 20px;
+padding:20px 0px 10px 0px;
+color:#948264;
+}
+
+/* 
+Endar theme specific styles 
+Other previous are adapted 
+*/
+
+.clear {
+clear:both;
+height:1px;
+}
+.title, .title2 {
+font-family : Georgia, Verdana, Geneva, Arial, Helvetica, sans-serif;
+font-weight : bold;
+background-repeat : repeat-x;
+background-image: url(images/title.gif);
+background-position: top;
+margin:0;
+font-size: 103%;
+color: #553A00; 
+padding: 6px 6px 4px 6px;
+border-bottom: 1px solid #A5D6B6;
+background-color: #BFE2CA;
+}
+.title2 {
+background-image: url(images/title2.gif);
+}
+.title a:link, 
+.title a:visited, 
+.title2 a:link, 
+.title2 a:visited {
+color: #553A00;
+text-decoration:none;
+}
+dl, dt, dd, h1, h2, h3, h4, h5, h6 {
+margin:0;
+padding:0;
+}
+dt, 
+.subtitle {
+background: #BCAF97 url(images/subtitle.gif) repeat-x top;
+color: #666; 
+font-weight: bold; 
+letter-spacing: 1px;
+padding: 8px 4px 4px 4px;
+font-size: 93%;
+clear:both;
+}
+dt a:link, dt a:visited, 
+.subtitle a:link, .subtitle a:visited {
+color: #E9E4CD;
+text-decoration: none;
+}
+.subtitle a:hover, dt a:hover {
+color: #FFF9C5;
+}
+dd, .row1, .row2, .row1-center, .row-pm, .row1-right {
+padding: 10px 4px 5px 4px;
+background: #E2DBBF url(images/row.gif) repeat-x top;
+}
+
+/* sticky topics */
+
+dt.sticky-topic {
+
+}
+dt.sticky-topic a {
+
+}
+dt.sticky-topic a:hover {
+
+}
+
+dd.sticky-topic {
+background:#E2DBBF url(images/row-alt.gif) repeat-x top;
+}
+.row-pm {
+padding: 10px 20px 5px 20px;
+}
+.row1-center {
+text-align:center;
+}
+.row1-right {
+text-align:right;
+}
+.right {
+
+}
+.left {
+float:right;width: 65%; margin-left: 20px;
+}
+.row1 .right,
+.row1 .left {
+padding:4px;
+}
+.border, 
+.border-mod, 
+.border-sides, 
+.border-post,
+.bread-nav, 
+.border-marg {
+border:1px solid #AD9C82;
+}
+.border-marg {
+margin-bottom:2ex;
+}
+.border-mod {
+border-width: 0 1px 1px 1px;
+}
+.border-sides {
+border-width: 0px 1px 0px 1px;
+}
+.bread-nav {
+border: 1px solid #AD9C82;
+margin-bottom:2ex;
+padding:1px;
+}
+.bread-nav .subtitle {
+background: url(images/cp-nav-rtl.gif) no-repeat top left;
+padding:4px 5px 3px 10px;
+color:#553A00;
+border:1px dashed #AD9C82;
+}
+.bread-nav .subtitle a, 
+.bread-nav .subtitle a:visited {
+color: #378E59;
+}
+.bread-nav .subtitle a:hover {
+color:#553A00;
+}
+.bread-nav p {
+margin:0;
+}
+.border .bread-nav, 
+.border-mod .bread-nav, 
+.border-mod .border-mod {
+margin-bottom:0;
+}
+.block-foot {
+background: #C0B39E url(images/block-foot.gif) repeat-x top;
+color: #000;
+font-size: 0;
+height: 12px;
+padding:0px;
+}
+.topic-icon {
+float:right;
+margin:0 0 0 5px;
+}
+.index-topic-icon {
+float:right;
+margin:1px 0 0 7px;
+}
+.float-r,
+.float-r-collapse, 
+.float-r-quickmod, 
+.subtitle-collapse-icon {
+float:left;
+}
+
+/*hide from ie-mac \*/
+* html .float-r-quickmod{
+height: 0px;
+margin-bottom: -7px;
+}
+* html .subtitle-collapse-icon {
+margin:-1px 0 -3px 0;
+}
+/* End hide from IE-mac */
+
+.float-r-collapse {
+margin-top:-1px;
+}
+.float-r-quickmod img {
+margin-top: 0px;
+}
+.float-l {
+float:right;
+}
+
+/* detailed list inside a "row" */
+
+.row1 dl, 
+.row2 dl {
+border: 1px solid #AD9C82;
+border-width:1px 0;
+padding:0 0 1px 0;
+}
+.row1 dt, 
+.row2 dt {
+background: none;
+color: #553A00; 
+font-weight: bold; 
+letter-spacing: 0px;
+padding: 4px;
+font-size:100%;
+border-top: 1px solid #AD9C82;
+margin:1px 0 0 0;
+}
+.row1 dt a:link, .row1 dt a:visited, 
+.row2 dt a:link, .row2 dt a:visited {
+color: #378e59;
+text-decoration: none;
+}
+.row2 dt, .row2 dd {
+clear:none;
+}
+.row1 dd, 
+.row2 dd {
+padding: 4px;
+background: none;
+border-bottom: 1px solid #AD9C82;
+}
+
+/* unordered list looking like looking like table rows */
+
+ul.row-list {
+margin:0;
+border: 1px solid #AD9C82;
+border-width:1px 0;
+padding:0 0 1px 0;
+list-style-type: none;
+}
+.row-list li ,
+.row {
+border: 1px solid #AD9C82;
+border-width:1px 0;
+padding: 4px 6px;
+margin:1px 0 0 0;
+}
+
+/* same effect with div's */
+
+.row {
+margin:1px 0 1px 0;
+}
+
+/* unordered list looking like looking like an unordered list but with an image prefix */
+
+ul.bullit-list, 
+ul.bullit-list-stats {
+margin:0;
+padding:0;
+list-style-type: none;
+}
+.bullit-list li, 
+.bullit-list-stats li {
+padding: 4px 18px 4px 6px;
+margin:0;
+background: url(images/bullit.gif);
+background-repeat: no-repeat;
+background-position: 100% 7px;
+}
+.bullit-list-stats li{
+clear:both;
+text-align:right;
+}
+
+/* Topic icons explaination */
+
+#topiclegend {
+list-style-type: none;
+margin:0px auto;
+padding:0px;
+width:600px;
+
+}
+#topiclegend li {
+background: url(images/quote-top.gif) repeat-x top;
+padding: 10px 5px 5px 5px;
+text-align: left;
+border: 1px solid #AD9C82;
+margin:5px;
+float:left;
+list-style-type: none;
+width:126px;
+width /**/:138px; /* for IE5/Win only */
+}
+
+html>body #topiclegend li {
+width:128px;
+}
+
+#topiclegend li img{
+float:left;
+margin: 0 3px 0 0;
+}
+
+/* raised panel surrounding main content (left and right page borders) */
+
+#content-container{
+background:#E2DBBF url(images/panel-l.gif) repeat-y left;
+}
+#content {
+background: url(images/panel-r.gif) repeat-y right;
+padding:10px 24px 2px 24px;
+}
+
+/* overall width of forum */
+#wrapper {
+padding:2% 0 0 0;
+margin:0px auto;
+width:94%;
+text-align:right;
+}
+
+/* header section */
+
+#header {
+background: #E2DBBF url(images/head-tile.gif) repeat-x top;
+height:114px;
+}
+#header-right {
+background: url(images/head-right.gif) no-repeat top right;
+height:114px;
+}
+#logo {
+background: url(images/logo.gif) no-repeat left top;
+height:114px;
+}
+#logo a {
+margin: 0;
+padding: 0;
+display:block;
+text-decoration: none;
+padding: 114px 0 0 0;
+overflow: hidden;
+height: 0px !important; 
+height /**/:114px; /* for IE5/Win only */
+}
+
+/* Main navigation containment */
+
+#nav {
+background: #DED7BC url(images/nav-tile.gif) repeat-x top;
+color: #553A00;
+font-weight:bold;
+}
+#nav a {
+color: #553A00;
+}
+#nav-left {
+background: url(images/nav-left.gif) repeat-y left;
+}
+#nav-right {
+background: url(images/nav-right.gif) repeat-y right;
+padding:8px 12px 0 12px;
+}
+#nav-bot {
+background: url(images/nav-bot.gif) repeat-x top;
+height:31px;
+}
+
+/* help search etc navigation list */
+
+ul#usernav {
+margin:0;
+padding:0 10px;
+display:inline;
+font-size:110%;
+}
+#usernav li {
+display:inline;
+margin: 0 8px 0 0;
+}
+
+/* footer */
+
+#footer {
+background: #E2DBBF url(images/foot-tile.gif) repeat-x top;
+margin-top: -1px; /* fixes intermitant (resolution dependant) bug */
+}
+#foot-left {
+background: url(images/foot-left.gif) no-repeat top left;
+}
+#foot-right {
+background: url(images/foot-right.gif) no-repeat top right;
+height:219px;
+}
+
+/* Magic clears */
+
+.clearfix:after {
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+.clearfix {display:inline-block;}
+
+/*hide from ie-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+
+.row1:after, 
+dd:after {
+content: "."; 
+display: block; 
+height: 0px; 
+clear: both; 
+visibility: hidden;
+}
+
+.row1, 
+dd {
+display: inline-block;
+}
+
+/*hide from ie-mac \*/
+* html .row1,
+* html dd{
+height: 1px;
+}
+.row1, dd {
+display: block;
+}
+/* End hide from IE-mac */
+
+#user-cp-right dd:after {
+clear:none;
+}
+
+
+/* postbit  */
+
+.border-post .title .float-r {
+margin-top:1px;
+}
+.post-top {
+background: url(images/post-top.gif) repeat-x top;
+border-top: 1px solid #AD9C82;
+height:7px;
+}
+.post-top-left {
+background: url(images/post-top-left-rtl.gif) no-repeat right;
+height:7px;
+}
+.post-bg {
+background: url(images/post-bg-rtl.gif) repeat-y right;
+}
+.post-left {
+float:right;
+width:159px;
+padding:6px 5px 0 5px;
+}
+.post-left ul {
+margin:0;
+padding:0;
+list-style: none;
+}
+.post-right {
+margin: 0 172px 0 0;
+padding: 6px 20px 15px 20px;
+min-height:1px;
+}
+.post-overflow {
+width: 100%;
+overflow: auto;
+}
+* html .post-overflow {
+height: 400px;
+}
+.post-foot {
+clear:both;
+background: #E1DABE url(images/post-foot.gif) repeat-x bottom;
+border-top: 1px solid #AD9C82;
+padding:0 4px;
+text-align:left;
+height:22px;
+}
+
+.edittime {
+margin-top:20px;
+font-size:90%;
+}
+* html .post-foot img {
+margin:0 0 -3px 0;
+padding:0px;
+}
+
+/* hack to rid IE of guillotine effect etc*/
+
+/* hide from ie-mac \*/
+* html .row1,
+* html .row1-center,
+* html .row1-right,
+* html dd, 
+* html .title, 
+* html .subtitle, 
+* html dt, 
+* html .float-r-quickmod,
+* html .signature p,
+* html .postfoot, 
+* html .border-post, 
+* html #user-cp-right, 
+* html #header, 
+* html #header-right,
+* html #nav, 
+* html #nav-left,
+* html #nav-right, 
+* html .border, 
+* html .stats-right,
+* html .post-right {
+height: 0px;
+}
+/* End hide from IE-mac */
+
+/* hover effect on topic buttons */
+
+* html #topic-buttons-top a, 
+* html #topic-buttons-bot a,
+* html #topic-buttons-mod a,
+#topic-buttons-top a img, 
+#topic-buttons-bot a img, 
+#topic-buttons-mod a img {
+	background-color: #BFE2CA;
+}
+* html #topic-buttons-top a:hover, 
+* html #topic-buttons-bot a:hover,
+* html #topic-buttons-mod a:hover,
+#topic-buttons-top a:hover img, 
+#topic-buttons-bot a:hover img, 
+#topic-buttons-mod a:hover img{
+	background-color: #FFF9C5;
+}
+#topic-buttons-top .navPages:link, 
+#topic-buttons-bot .navPages:link, 
+#topic-buttons-mod .navPages:link,
+#topic-buttons-top .navPages:hover, 
+#topic-buttons-bot .navPages:hover, 
+#topic-buttons-mod .navPages:hover,
+#topic-buttons-top .navPages:visited, 
+#topic-buttons-bot .navPages:visited, 
+#topic-buttons-mod .navPages:visited {
+	background-color: transparent;
+}
+
+/* form layout */
+
+.formleft {
+width:180px;
+display:block;
+float:right;
+padding:4px 4px 4px 4px;
+text-align:left;
+}
+.formright {
+display:block;
+padding:4px;
+}
+#user-cp-right .formright {
+min-height:46px;
+}
+* html #user-cp-right .formright {
+height:46px;
+}
+
+/* text and form buttons */
+
+.button, 
+.buttons a:link, 
+.buttons a:visited {
+color: #553A00;
+border: 3px double #AD9C82;
+border-right-color: #7D6651;
+border-bottom-color: #7D6651;
+margin:0px 5px;
+padding:2px 4px;
+text-decoration:none;
+white-space: nowrap;
+background-color: #E2DBBF;
+}
+.button {
+margin:0px 5px 0px 5px;
+padding:0px 4px 0px 4px;
+}
+
+.button:active, 
+.buttons a:hover {
+color: #333;
+border: 3px double #AD9C82;
+border-top-color: #7D6651;
+border-left-color: #7D6651;
+background-color: #DCD3B4;
+}
+
+
+/* user cp - messenger*/
+
+#user-cp-left {
+width:230px;
+float:right;
+}
+#messages #user-cp-left {
+width:190px;
+}
+#user-cp-left ul {
+margin:0;
+padding:0;
+list-style: none;
+}
+#user-cp-left li a{
+border: 1px solid #AD9C82;
+margin:2px;
+display:block;
+padding:2px 2px 2px 30px;
+color: #553A00;
+background-color: #E2DBBF;
+min-width:1px;
+}
+#user-cp-left li a:hover, 
+#user-cp-left li#selected a {
+background: url(images/cp-nav-rtl.gif) no-repeat top left;
+text-decoration:none;
+font-weight: bold;
+}
+/* Hide from mac IE \*/
+* html #user-cp-left li a {
+height:1px;
+}
+/* end hide from mac ie */
+
+#cp-avatar {
+float:left;
+height:180px;
+width:140px;
+overflow:auto;
+text-align:left;
+}
+#user-cp-right {
+margin:0 240px 0 0;
+min-height: 1px;
+}
+#messages #user-cp-right {
+margin:0 210px 0 0 ;
+}
+#user-cp-right .subtitle,
+#user-cp-right .post-foot {
+clear:none;
+}
+.replied {
+	text-align:center;
+	color: #990000;
+}
+.stripe-row, 
+.calendar_today {
+background: url(images/quote-top.gif) repeat-x top;
+background-color: #E2DBBF;
+color:#553A00;
+}
+.calendar_today {
+height: 96px; 
+border: 2px outset;
+height: 100px;
+padding: 10px 2px 2px 2px;
+}
+
+/* split posts - select posts */
+
+.split-posts-left {
+float:left;
+width:45%;
+}
+.split-posts-right {
+float:right;
+width:45%;
+}
+
+/* icons at infp center on index foot */
+
+#icon-calendar, 
+#icon-stats, 
+#icon-online, 
+#icon-pm {
+background-position: center right;
+padding: 0 50px 0 0;
+min-height: 38px;
+background-repeat: no-repeat;
+}
+
+/* Hide from IE Mac \*/
+* html #icon-calendar, 
+* html #icon-stats, 
+* html #icon-online, 
+* html #icon-pm {
+height: 38px;
+}
+/* End hide from IE Mac \*/
+
+#icon-calendar {
+background-image: url(images/icons/icon-calendar.gif);
+}
+#icon-stats {
+background-image: url(images/icons/icon-stats.gif);
+}
+#icon-online {
+background-image: url(images/icons/icon-online.gif);
+}
+#icon-pm {
+background-image: url(images/icons/icon-pm.gif);
+}
+.poll-bar {
+background-image: url(images/poll-bar.gif);
+border: 1px solid #AD9C82;
+}
+#poll-buttons {
+float:left;
+padding:5px;
+}
+
+/*stats page*/
+
+#stats .right {
+margin-right: 66%;
+}
+.stats-left {
+width:49%;
+float:left;
+border: 1px solid #AD9C82;
+border-width:0 1px 1px 1px;
+margin:5px;
+}
+.stats-right {
+border: 1px solid #AD9C82;
+border-width:0 1px 1px 1px;
+margin:5px 5px 5px 51%;
+}
+
+.stats-left .subtitle, 
+.stats-right .subtitle,
+.stats-left .bullit-list-stats li, 
+.stats-right .bullit-list-stats li
+{
+text-align:right;
+clear:none;
+border-bottom: 1px solid #AD9C82;
+}
+.stats-left .float-r, 
+.stats-right .float-r {
+padding-top:3px;
+}
+
+.copy-r {
+font-family: Verdana,Arial,sans-serif;
+color: #E8E1C7;
+text-align:center;
+font-size: 90%;
+margin-top:-10px;
+padding-bottom: 10px;
+font-weight: bold;
+background-color: transparent;
+}
+
+/* hide from mac IE \*/
+* html .copy-r {
+margin-top:0px;
+background-color: #AD9C82;
+}
+/* End hide from mac IE */
+
+.copy-r a {
+color: #DCD1AB;
+}
+.copy-r .smalltext {
+font-size: 90%;
+}
+#ajax_in_progress
+{
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+}
+#ajax_in_progress .border {
+width: 400px;
+margin: 25% auto;
+}
+#news {
+text-align: right;
+}
+#upshrinkHeader .float-l {
+float: left;
+}
+.clearfix .float-l {
+float: left;
+}
+.post-foot .float-l {
+float: right;
+}

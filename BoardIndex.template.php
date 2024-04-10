@@ -1,397 +1,375 @@
 <?php
-/**
- * Simple Machines Forum (SMF)
- *
- * @package SMF
- * @author Simple Machines https://www.simplemachines.org
- * @copyright 2022 Simple Machines and individual contributors
- * @license https://www.simplemachines.org/about/smf/license.php BSD
- *
- * @version 2.1.3
- */
+// Version: 1.1; BoardIndex
 
-/**
- * The top part of the outer layer of the boardindex
- */
-function template_boardindex_outer_above()
-{
-	template_newsfader();
-}
-
-/**
- * This shows the newsfader
- */
-function template_newsfader()
-{
-	global $context, $settings, $txt;
-
-	// Show the news fader?  (assuming there are things to show...)
-	if (!empty($settings['show_newsfader']) && !empty($context['news_lines']))
-	{
-		echo '
-		<div class="forum_news">
-			<span class="news_icon"><i class="news_icon fa fa-newspaper"></i></span>
-			<h2>', $txt['news'], ':</h2>
-			<ul id="smf_slider">';
-
-		foreach ($context['news_lines'] as $news)
-			echo '
-				<li>', $news, '</li>';
-
-		echo '
-			</ul>
-		</div>';
-
-		addInlineJavaScript('
-			jQuery("#smf_slider").slippry({
-				pause: smf_newsfader_time,
-				adaptiveHeight: 0,
-				captions: 0,
-				controls: 0,
-			});
-		', true);
-	}
-}
-
-/**
- * This actually displays the board index
- */
 function template_main()
 {
-	global $context, $txt;
+	global $context, $settings, $options, $txt, $scripturl, $modSettings;
 
+	// Show some statistics next to the link tree if SP1 info is off.
 	echo '
-	<div id="boardindex_table" class="boardindex_table">';
+ ', theme_linktree(), '';
+	if (!$settings['show_sp1_info'])
+		echo '
+			', $txt[19], ': ', $context['common_stats']['total_members'], ' &nbsp;&#8226;&nbsp; ', $txt[95], ': ', $context['common_stats']['total_posts'], ' &nbsp;&#8226;&nbsp; ', $txt[64], ': ', $context['common_stats']['total_topics'], '
+			', ($settings['show_latest_member'] ? '<br />' . $txt[201] . ' <strong>' . $context['common_stats']['latest_member']['link'] . '</strong>' . $txt[581] : '');
+
+	// Show the news fader?  (assuming there are things to show...)
+	if ($settings['show_newsfader'] && !empty($context['fader_news_lines']))
+	{
+		echo '
+<div class="border-mod" style="margin-bottom:2ex;text-align:center;">
+<h2 class="subtitle">', $txt[102], '</h2>
+<div class="row1-center" style="height:30px;overflow:auto;">';
+
+		// Prepare all the javascript settings.
+		echo '
+				<div id="smfFadeScroller" style="margin:0 15px; padding: 2px;">', $context['news_lines'][0], '</div>
+				<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+					// The fading delay (in ms.)
+					var smfFadeDelay = ', empty($settings['newsfader_time']) ? 5000 : $settings['newsfader_time'], ';
+					// Fade from... what text color?  To which background color?
+					var smfFadeFrom = {"r": 0, "g": 0, "b": 0}, smfFadeTo = {"r": 255, "g": 255, "b": 255};
+					// Surround each item with... anything special?
+					var smfFadeBefore = "", smfFadeAfter = "";
+
+					var foreColor, backEl, backColor;
+
+					if (typeof(document.getElementById(\'smfFadeScroller\').currentStyle) != "undefined")
+					{
+						foreColor = document.getElementById(\'smfFadeScroller\').currentStyle.color.match(/#([\da-f][\da-f])([\da-f][\da-f])([\da-f][\da-f])/);
+						smfFadeFrom = {"r": parseInt(foreColor[1]), "g": parseInt(foreColor[2]), "b": parseInt(foreColor[3])};
+
+						backEl = document.getElementById(\'smfFadeScroller\');
+						while (backEl.currentStyle.backgroundColor == "transparent" && typeof(backEl.parentNode) != "undefined")
+							backEl = backEl.parentNode;
+
+						backColor = backEl.currentStyle.backgroundColor.match(/#([\da-f][\da-f])([\da-f][\da-f])([\da-f][\da-f])/);
+						smfFadeTo = {"r": eval("0x" + backColor[1]), "g": eval("0x" + backColor[2]), "b": eval("0x" + backColor[3])};
+					}
+					else if (typeof(window.opera) == "undefined" && typeof(document.defaultView) != "undefined")
+					{
+						foreColor = document.defaultView.getComputedStyle(document.getElementById(\'smfFadeScroller\'), null).color.match(/rgb\((\d+), (\d+), (\d+)\)/);
+						smfFadeFrom = {"r": parseInt(foreColor[1]), "g": parseInt(foreColor[2]), "b": parseInt(foreColor[3])};
+
+						backEl = document.getElementById(\'smfFadeScroller\');
+						while (document.defaultView.getComputedStyle(backEl, null).backgroundColor == "transparent" && typeof(backEl.parentNode) != "undefined" && typeof(backEl.parentNode.tagName) != "undefined")
+							backEl = backEl.parentNode;
+
+						backColor = document.defaultView.getComputedStyle(backEl, null).backgroundColor.match(/rgb\((\d+), (\d+), (\d+)\)/);
+						smfFadeTo = {"r": parseInt(backColor[1]), "g": parseInt(backColor[2]), "b": parseInt(backColor[3])};
+					}
+
+					// List all the lines of the news for display.
+					var smfFadeContent = new Array(
+						"', implode('",
+						"', $context['fader_news_lines']), '"
+					);
+				// ]]></script>
+				<script language="JavaScript" type="text/javascript" src="', $settings['default_theme_url'], '/fader.js"></script>
+			</div>
+		<div class="block-foot"><!--no content--></div>
+</div>';
+	}
 
 	/* Each category in categories is made up of:
-	id, href, link, name, is_collapsed (is it collapsed?), can_collapse (is it okay if it is?),
-	new (is it new?), collapse_href (href to collapse/expand), collapse_image (up/down image),
-	and boards. (see below.) */
+		id, href, link, name, is_collapsed (is it collapsed?), can_collapse (is it okay if it is?),
+		new (is it new?), collapse_href (href to collapse/expand), collapse_image (up/down iamge),
+		and boards. (see below.) */
 	foreach ($context['categories'] as $category)
 	{
-		// If theres no parent boards we can see, avoid showing an empty category (unless its collapsed)
-		if (empty($category['boards']) && !$category['is_collapsed'])
-			continue;
-
 		echo '
-		<div class="main_container">
-			<div class="cat_bar ', $category['is_collapsed'] ? 'collapsed' : '', '" id="category_', $category['id'], '">
-				<h3 class="catbg">';
+<div class="border">
+<h3 class="title', $category['new'] ? '2' : '', '">';
 
 		// If this category even can collapse, show a link to collapse it.
 		if ($category['can_collapse'])
 			echo '
-					<span id="category_', $category['id'], '_upshrink" class="', $category['is_collapsed'] ? 'toggle_down' : 'toggle_up', ' floatright" data-collapsed="', (int) $category['is_collapsed'], '" title="', !$category['is_collapsed'] ? $txt['hide_category'] : $txt['show_category'], '" style="display: none;"></span>';
+			<span class="float-r-collapse"><a href="', $category['collapse_href'], '">', $category['collapse_image'], '</a></span>';
 
 		echo '
-					', $category['link'], '
-				</h3>
-			</div>
-			', !empty($category['description']) ? '
-			<div class="desc">' . $category['description'] . '</div>' : '', '
-			<div id="category_', $category['id'], '_boards" ', (!empty($category['css_class']) ? ('class="' . $category['css_class'] . '"') : ''), $category['is_collapsed'] ? ' style="display: none;"' : '', '>';
+			', $category['link'], '
+		</h3>
+	  <dl>';
 
-		/* Each board in each category's boards has:
-		new (is it new?), id, name, description, moderators (see below), link_moderators (just a list.),
-		children (see below.), link_children (easier to use.), children_new (are they new?),
-		topics (# of), posts (# of), link, href, and last_post. (see below.) */
-		foreach ($category['boards'] as $board)
+		// Assuming the category hasn't been collapsed...
+		if (!$category['is_collapsed'])
 		{
-			echo '
-				<div id="board_', $board['id'], '" class="up_contain b_', $board['type'], (!empty($board['css_class']) ? ' ' . $board['css_class'] : ''), '">
+			/* Each board in each category's boards has:
+				new (is it new?), id, name, description, moderators (see below), link_moderators (just a list.),
+				children (see below.), link_children (easier to use.), children_new (are they new?),
+				topics (# of), posts (# of), link, href, and last_post. (see below.) */
+			foreach ($category['boards'] as $board)
+			{
+				echo '
+	 <dt><strong><a href="', $board['href'], '" name="b', $board['id'], '">', $board['name'], '</a></strong></dt>
+		<dd><div class="left"><a href="', $scripturl, '?action=unread;board=', $board['id'], '.0">';
 
-					<div class="board_icon">
-						', function_exists('template_bi_' . $board['type'] . '_icon') ? call_user_func('template_bi_' . $board['type'] . '_icon', $board) : template_bi_board_icon($board), '
-					</div>
+				// If the board is new, show a strong indicator.
+				if ($board['new'])
+					echo '<img src="', $settings['images_url'], '/on.gif" alt="', $txt[333], '" title="', $txt[333], '" border="0" class="index-topic-icon" />';
+				// This board doesn't have new posts, but its children do.
+				elseif ($board['children_new'])
+					echo '<img src="', $settings['images_url'], '/on2.gif" alt="', $txt[333], '" title="', $txt[333], '" border="0" class="index-topic-icon" />';
+				// No new posts at all!  The agony!!
+				else
+					echo '<img src="', $settings['images_url'], '/off.gif" alt="', $txt[334], '" title="', $txt[334], '" border="0" class="index-topic-icon" />';
 
-					<div class="info">
-						', function_exists('template_bi_' . $board['type'] . '_info') ? call_user_func('template_bi_' . $board['type'] . '_info', $board) : template_bi_board_info($board), '
-					</div>
+				echo '</a>
+			
+			', $board['description'];
+		 
+		 echo '<br /><em>';
 
-					<div class="board_stats">
-						', function_exists('template_bi_' . $board['type'] . '_stats') ? call_user_func('template_bi_' . $board['type'] . '_stats', $board) : template_bi_board_stats($board), '
-					</div>
+				// Show the "Child Boards: ". (there's a link_children but we're going to bold the new ones...)
+				if (!empty($board['children']))
+				{
+					// Sort the links into an array with new boards bold so it can be imploded.
+					$children = array();
+					/* Each child in each board's children has:
+						id, name, description, new (is it new?), topics (#), posts (#), href, link, and last_post. */
+					foreach ($board['children'] as $child)
+					{
+						$child['link'] = '<a href="' . $child['href'] . '" title="' . ($child['new'] ? $txt[333] : $txt[334]) . ' (' . $txt[330] . ': ' . $child['topics'] . ', ' . $txt[21] . ': ' . $child['posts'] . ')">' . $child['name'] . '</a>';
+						$children[] = $child['new'] ? '<strong>' . $child['link'] . '</strong>' : $child['link'];
+					}
 
-					<div class="lastpost">
-						', function_exists('template_bi_' . $board['type'] . '_lastpost') ? call_user_func('template_bi_' . $board['type'] . '_lastpost', $board) : template_bi_board_lastpost($board), '
-					</div>
+					echo '
+			', $txt['parent_boards'], ': ', implode(', ', $children), '';
+				}
 
-					', function_exists('template_bi_' . $board['type'] . '_children') ? call_user_func('template_bi_' . $board['type'] . '_children', $board) : template_bi_board_children($board) , '
+				// Show some basic information about the number of posts, etc.
+				echo '<br />
+		  
+			', $board['posts'], ' ', $txt[21], ' ', $txt['smf88'], '
+			', $board['topics'], ' ', $txt[330], '. ';
+	  
+	  // Show the "Moderators: ".  Each has name, href, link, and id. (but we're gonna use link_moderators.)
+				if (!empty($board['moderators']))
 
-				</div><!-- #board_[id] -->';
+
+					echo '
+		 ', count($board['moderators']) == 1 ? $txt[298] : $txt[299], ': ', implode(', ', $board['link_moderators']), '';
+echo '</em></div>';
+
+				/* The board's and children's 'last_post's have:
+					time, timestamp (a number that represents the time.), id (of the post), topic (topic id.),
+					link, href, subject, start (where they should go for the first unread post.),
+					and member. (which has id, name, link, href, username in it.) */
+				
+				if (!empty($board['last_post']['id']))
+					echo '<div class="right">
+			', $txt[22], ' ', $txt[30], '<br /><em> ', $board['last_post']['time'], '<br />
+			', $txt['smf88'], ' ', $board['last_post']['link'], ' ', $txt[525], ' ', $board['last_post']['member']['link'], '</em></div>';
+			
+		else
+			echo '<div class="clear"><!--no content--></div>';
+
+				echo '
+		</dd>';
+			}
 		}
 
 		echo '
-			</div><!-- #category_[id]_boards -->
-		</div><!-- .main_container -->';
+	 </dl>
+	 <div class="block-foot"><!--no content--></div>
+</div>
+<br />';
 	}
 
-	echo '
-	</div><!-- #boardindex_table -->';
-
-	// Show the mark all as read button?
-	if ($context['user']['is_logged'] && !empty($context['categories']))
+	if ($context['user']['is_logged'])
+	{
 		echo '
-	<div class="mark_read">
-		', template_button_strip($context['mark_read_button'], 'right'), '
-	</div>';
-}
+<div class="clearfix" id="topic-buttons-bot" style="margin-bottom:2ex;">';
+ 
+// Show the mark all as read button?
+		if ($settings['show_mark_read'] && !empty($context['categories']))
+			echo '
+			<span class="float-r">
+			<a href="', $scripturl, '?action=markasread;sa=all;sesc=' . $context['session_id'] . '">', ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/' . $context['user']['language'] . '/markread.gif" alt="' . $txt[452] . '" border="0" />' : $txt[452]), '</a></span>';
 
-/**
- * The lower part of the outer layer of the board index
- */
-function template_boardindex_outer_below()
-{
-	template_info_center();
-}
 
-/**
- * Displays the info center
- */
-function template_info_center()
-{
-	global $context;
-
-	if (empty($context['info_center']))
-		return;
+			echo '<img src="' . $settings['images_url'] . '/new_some.gif" alt="" border="0" align="middle" /> ', $txt[333], '
+			<img src="' . $settings['images_url'] . '/new_none.gif" alt="" border="0" align="middle" style="margin-left: 4ex;" /> ', $txt[334], '
+	  </div>';
+	}
 
 	// Here's where the "Info Center" starts...
 	echo '
-	<div class="roundframe" id="info_center">
-		<div id="upshrink_stats">';
-
-	foreach ($context['info_center'] as $block)
-	{
-		$func = 'template_ic_block_' . $block['tpl'];
-		echo '
-			<div class="info-block">
-				', $func(), '
-			</div>';
-	}
-
-	echo '
-		</div><!-- #info_center_blocks -->
-	</div><!-- #upshrink_stats -->';
-}
-
-/**
- * The recent posts section of the info center
- */
-function template_ic_block_recent()
-{
-	global $context, $txt, $scripturl, $settings;
+<br />
+<div class="border">
+<h4 class="title">', $txt[685], '</h4>';
 
 	// This is the "Recent Posts" bar.
-	echo '
-	<div class="block-icon">
-		<a href="', $scripturl, '?action=recent"><span class="main_icons recent_posts"></span></a>
-	</div>
-	<div id="recent_posts_content">
-		<div class="sub_bar">
-			<h4 class="subbg">
-				<a href="', $scripturl, '?action=recent">', $txt['recent_posts'], '</a>
-			</h4>
-		</div>';
-
-	// Only one sad little post
-	if ($settings['number_recent_posts'] == 1)
+	if (!empty($settings['number_recent_posts']))
 	{
 		echo '
-		<div class="windowbg">
-			<h6>', $context['latest_post']['link'], '</h6>
-			<span class="smalltext">', themecustoms_icon('fa fa-clock'), ' ', $context['latest_post']['time'], '</span><br>
-		</div>';
-	}
+	<h5 class="subtitle"><a href="', $scripturl, '?action=recent">', $txt[214], '</a></h5>
+	<div class="row1">';
 
-	// Show lots of posts.
-	if (!empty($context['latest_posts']))
-	{
-		echo '
-		<ul>';
-
-		/* Each post in latest_posts has:
-			board (with an id, name, and link.), topic (the topic's id.), poster (with id, name, and link.),
-			subject, short_subject (shortened with...), time, link, and href. */
-		foreach ($context['latest_posts'] as $post)
+		// Only show one post.
+		if ($settings['number_recent_posts'] == 1)
+		{
+			// latest_post has link, href, time, subject, short_subject (shortened with...), and topic. (its id.)
+			echo '
+			<strong><p class="smalltext"><a href="', $scripturl, '?action=recent">', $txt[214], '</a></p></strong>
+			<p class="smalltext">
+				', $txt[234], ' &quot;', $context['latest_post']['link'], '&quot; ', $txt[235], ' (', $context['latest_post']['time'], ')
+			</p>';
+		}
+		// Show lots of posts.
+		elseif (!empty($context['latest_posts']))
 		{
 			echo '
-			<li class="windowbg">
-				', (!empty($post['poster']['avatar']) && !empty($post['poster']['avatar']) ? themecustoms_avatar($post['poster']['avatar']['href'], $post['poster']['id']) : ''), '
-				<div>
-					<h6>', $post['link'], '</h6>
-					<div>
-						<span class="smalltext poster_link">', themecustoms_icon('fa fa-user'), ' ', $post['poster']['link'], '</span>
-						<span class="smalltext">', themecustoms_icon('fa fa-clock'), ' ', $post['time'], '</span>
-						<span class="smalltext">', themecustoms_icon('fa fa-folder'), ' ', $post['board']['link'], '</span>
-					</div>
-				</div>
-			</li>';
+			<ul class="bullit-list">';
+			/* Each post in latest_posts has:
+				board (with an id, name, and link.), topic (the topic's id.), poster (with id, name, and link.),
+				subject, short_subject (shortened with...), time, link, and href. */
+			foreach ($context['latest_posts'] as $post)
+				echo '
+				<li><p class="smalltext"><strong>', $post['link'], '</strong> ', $txt[525], ' ', $post['poster']['link'], ' [', $post['board']['link'], '] ', $post['time'], '</p></li>';
+			echo '
+			</ul>';
 		}
 		echo '
-		</ul>';
+		</div>';
 	}
-	echo '
-	</div><!-- #recent_posts_content -->';
-}
-
-/**
- * The calendar section of the info center
- */
-function template_ic_block_calendar()
-{
-	global $context, $scripturl, $txt;
 
 	// Show information about events, birthdays, and holidays on the calendar.
-	echo '
-	<div class="block-icon">
-		<a href="', $scripturl, '?action=calendar', '"><span class="main_icons calendar"></span></a>
-	</div>
-	<div id="calendar_stats">
-		<div class="sub_bar">
-			<h4 class="subbg">
-				<a href="', $scripturl, '?action=calendar' . '">
-					', $context['calendar_only_today'] ? $txt['calendar_today'] : $txt['calendar_upcoming'], '
-				</a>
-			</h4>
-		</div>';
-
-	// Holidays like "Christmas", "Chanukah", and "We Love [Unknown] Day" :P
-	if (!empty($context['calendar_holidays']))
-		echo '
-		<p class="inline holiday">
-			<span>', $txt['calendar_prompt'], '</span> ', implode(', ', $context['calendar_holidays']), '
-		</p>';
-
-	// People's birthdays. Like mine. And yours, I guess. Kidding.
-	if (!empty($context['calendar_birthdays']))
+	if ($context['show_calendar'])
 	{
 		echo '
-		<p class="inline">
-			<span class="birthday">', $context['calendar_only_today'] ? $txt['birthdays'] : $txt['birthdays_upcoming'], '</span>';
+	<h5 class="subtitle"><a href="', $scripturl, '?action=calendar">', $context['calendar_only_today'] ? $txt['calendar47b'] : $txt['calendar47'], '</a></h5>
+	<div class="row1">
+	<div id="icon-calendar">
+		<p class="smalltext">';
 
-		// Each member in calendar_birthdays has: id, name (person), age (if they have one set?), is_last. (last in list?), and is_today (birthday is today?)
-		foreach ($context['calendar_birthdays'] as $member)
+		// Holidays like "Christmas", "Chanukah", and "We Love [Unknown] Day" :P.
+		if (!empty($context['calendar_holidays']))
 			echo '
-			<a href="', $scripturl, '?action=profile;u=', $member['id'], '">', $member['is_today'] ? '<strong class="fix_rtl_names">' : '', $member['name'], $member['is_today'] ? '</strong>' : '', isset($member['age']) ? ' (' . $member['age'] . ')' : '', '</a>', $member['is_last'] ? '' : ', ';
+				<span style="color: #', $modSettings['cal_holidaycolor'], ';">', $txt['calendar5'], ' ', implode(', ', $context['calendar_holidays']), '</span><br />';
 
+		// People's birthdays.  Like mine.  And yours, I guess.  Kidding.
+		if (!empty($context['calendar_birthdays']))
+		{
+			echo '
+				<span style="color: #', $modSettings['cal_bdaycolor'], ';">', $context['calendar_only_today'] ? $txt['calendar3'] : $txt['calendar3b'], '</span> ';
+			/* Each member in calendar_birthdays has:
+				id, name (person), age (if they have one set?), is_last. (last in list?), and is_today (birthday is today?) */
+			foreach ($context['calendar_birthdays'] as $member)
+				echo '
+				<a href="', $scripturl, '?action=profile;u=', $member['id'], '">', $member['is_today'] ? '<strong>' : '', $member['name'], $member['is_today'] ? '</strong>' : '', isset($member['age']) ? ' (' . $member['age'] . ')' : '', '</a>', $member['is_last'] ? '<br />' : ', ';
+		}
+		// Events like community get-togethers.
+		if (!empty($context['calendar_events']))
+		{
+			echo '
+				<span style="color: #', $modSettings['cal_eventcolor'], ';">', $context['calendar_only_today'] ? $txt['calendar4'] : $txt['calendar4b'], '</span> ';
+			/* Each event in calendar_events should have:
+				title, href, is_last, can_edit (are they allowed?), modify_href, and is_today. */
+			foreach ($context['calendar_events'] as $event)
+				echo '
+				', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" style="color: #FF0000;">*</a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '<br />' : ', ';
+
+			// Show a little help text to help them along ;).
+			if ($context['calendar_can_edit'])
+				echo '
+				(<a href="', $scripturl, '?action=helpadmin;help=calendar_how_edit" onclick="return reqWin(this.href);">', $txt['calendar_how_edit'], '</a>)';
+		}
 		echo '
-		</p>';
+			</p>
+		</div></div>';
 	}
 
-	// Events like community get-togethers.
-	if (!empty($context['calendar_events']))
+	// Show YaBB SP1 style information...
+	if ($settings['show_sp1_info'])
 	{
 		echo '
-		<p class="inline">
-			<span class="event">', $context['calendar_only_today'] ? $txt['events'] : $txt['events_upcoming'], '</span> ';
-
-		// Each event in calendar_events should have:
-		//		title, href, is_last, can_edit (are they allowed?), modify_href, and is_today.
-		foreach ($context['calendar_events'] as $event)
+	<h5 class="subtitle"><a href="', $scripturl, '?action=stats">', $txt[645], '</a></h5>
+	<div class="row1">
+	<div id="icon-stats">
+		<div class="left"><p class="smalltext">', $txt[490], ': <strong>', $context['common_stats']['total_topics'], '</strong> &nbsp;', $txt[489], ': <strong>', $context['common_stats']['total_posts'], '</strong><br />', !empty($context['latest_post']) ? '
+					' . $txt[659] . ': &quot;' . $context['latest_post']['link'] . '&quot;  (' . $context['latest_post']['time'] . ')<br />' : '', '
+					<a href="', $scripturl, '?action=recent">', $txt[234], '</a>', $context['show_stats'] ? ' 
+					<a href="' . $scripturl . '?action=stats">' . $txt['smf223'] . '</a>' : '', '
+				</p></div>
+				<div class="right"><p class="smalltext">
+					', $txt[488], ': <strong><a href="', $scripturl, '?action=mlist">', $context['common_stats']['total_members'], '</a></strong><br />
+					', $txt[656], ': <strong>', $context['common_stats']['latest_member']['link'], '</strong><br />';
+		// If they are logged in, show their unread message count, etc..
+		if ($context['user']['is_logged'])
 			echo '
-			', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" title="' . $txt['calendar_edit'] . '"><span class="main_icons calendar_modify"></span></a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '<br>' : ', ';
+					', $txt['smf199'], ': <strong><a href="', $scripturl, '?action=pm">', $context['user']['messages'], '</a></strong> ', $txt['newmessages3'], ': <strong><a href="', $scripturl, '?action=pm">', $context['user']['unread_messages'], '</a></strong>';
 		echo '
-		</p>';
+				&nbsp;</p>
+			</div></div></div>
+		 ';
 	}
-
-	echo '
-	</div>';
-}
-
-/**
- * The stats section of the info center
- */
-function template_ic_block_stats()
-{
-	global $scripturl, $txt, $context, $settings;
-
-	// Show statistical style information...
-	echo '
-	<div class="block-icon">
-		<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '"><span class="main_icons stats"></span></a>
-	</div>
-	<div id="statistics_stats">
-		<div class="sub_bar">
-			<h4 class="subbg">
-				<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '">', $txt['forum_stats'], '</a>
-			</h4>
-		</div>
-		<p class="inline">
-			', $context['common_stats']['boardindex_total_posts'], '', !empty($settings['show_latest_member']) ? ' - ' . $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong>' : '', '<br>
-			', (!empty($context['latest_post']) ? $txt['latest_post'] . ': <strong>&quot;' . $context['latest_post']['link'] . '&quot;</strong>  (' . $context['latest_post']['time'] . ')<br>' : ''), '
-			<a href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a>
-		</p>
-	</div>';
-}
-
-/**
- * The who's online section of the info center
- */
-function template_ic_block_online()
-{
-	global $context, $scripturl, $txt, $modSettings, $settings;
 
 	// "Users online" - in order of activity.
 	echo '
-	<div class="block-icon">
-	', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span>', $context['show_who'] ? '</a>' : '', '
-	</div>
-	<div id="online_users_stats">
-		<div class="sub_bar">
-			<h4 class="subbg">
-			', $txt['online_users'], '
-			</h4>
-		</div>
-		<p class="inline">
-			', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<strong>', $txt['online'], ': </strong>', comma_format($context['num_guests']), ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ', comma_format($context['num_users_online']), ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
+	<h5 class="subtitle"><a href="' . $scripturl . '?action=who">', $txt[158], '</a></h5>
+	<div class="row1">
+	<div id="icon-online">';
+
+	if ($context['show_who'])
+		echo '
+			<p><a href="', $scripturl, '?action=who">';
+
+	echo $context['num_guests'], ' ', $context['num_guests'] == 1 ? $txt['guest'] : $txt['guests'], ', ' . $context['num_users_online'], ' ', $context['num_users_online'] == 1 ? $txt['user'] : $txt['users'];
 
 	// Handle hidden users and buddies.
-	$bracketList = array();
+	if (!empty($context['num_users_hidden']) || ($context['show_buddies'] && !empty($context['show_buddies'])))
+	{
+		echo ' (';
 
-	if ($context['show_buddies'])
-		$bracketList[] = comma_format($context['num_buddies']) . ' ' . ($context['num_buddies'] == 1 ? $txt['buddy'] : $txt['buddies']);
+		// Show the number of buddies online?
+		if ($context['show_buddies'])
+			echo $context['num_buddies'], ' ', $context['num_buddies'] == 1 ? $txt['buddy'] : $txt['buddies'];
 
-	if (!empty($context['num_spiders']))
-		$bracketList[] = comma_format($context['num_spiders']) . ' ' . ($context['num_spiders'] == 1 ? $txt['spider'] : $txt['spiders']);
+		// How about hidden users?
+		if (!empty($context['num_users_hidden']))
+			echo $context['show_buddies'] ? ', ' : '', $context['num_users_hidden'] . ' ' . $txt['hidden'];
 
-	if (!empty($context['num_users_hidden']))
-		$bracketList[] = comma_format($context['num_users_hidden']) . ' ' . ($context['num_spiders'] == 1 ? $txt['hidden'] : $txt['hidden_s']);
+		echo ')';
+	}
 
-	if (!empty($bracketList))
-		echo ' (' . implode(', ', $bracketList) . ')';
+	if ($context['show_who'])
+		echo '</a></p>';
 
-	echo $context['show_who'] ? '</a>' : '', '
-
-			&nbsp;-&nbsp;', $txt['most_online_today'], ': <strong>', comma_format($modSettings['mostOnlineToday']), '</strong>&nbsp;-&nbsp;
-				', $txt['most_online_ever'], ': ', comma_format($modSettings['mostOnline']), ' (', timeformat($modSettings['mostDate']), '<br>';
+	echo '
+			<p class="smalltext">';
 
 	// Assuming there ARE users online... each user in users_online has an id, username, name, group, href, and link.
 	if (!empty($context['users_online']))
+		echo '
+				', $txt[140], ':<br />', implode(', ', $context['list_users_online']);
+
+	echo '
+				<br />', $context['show_stats'] && !$settings['show_sp1_info'] ? '
+				<a href="' . $scripturl . '?action=stats">' . $txt['smf223'] . '</a>' : '', '
+			</p>
+		</div></div>';
+
+	// If they are logged in, but SP1 style information is off... show a personal message bar.
+	if ($context['user']['is_logged'] && !$settings['show_sp1_info'])
 	{
 		echo '
-			', sprintf($txt['users_active'], $modSettings['lastActive']), ': <br>
-			<span class="onlinemembers_list' . (empty($settings['st_enable_avatars_online']) ? ' only-name' : '') . '">';
-
-		// Show the regular list
-		if (empty($settings['st_enable_avatars_online']))
-				echo implode(',&nbsp;', $context['list_users_online']);
-		// Avatars
-		else
-			foreach ($context['list_users_online'] as $user)
-				echo '
-				<span class="show_member">' . $user, '</span>';
-			
-			echo '
-			</span>';
-
-		// Showing membergroups?
-		if (!empty($settings['show_group_key']) && !empty($context['membergroups']))
-			echo '
-			<span class="membergroups">' . implode(', ', $context['membergroups']) . '</span>';
+	<h5 class="subtitle"><a href="', $scripturl, '?action=pm">', $txt[159], '</a></h5>
+	<div class="row1">
+	<div id="icon-pm">
+			', $context['allow_pm'] ? '' : '', '
+		
+			<p><strong><a href="', $scripturl, '?action=pm">', $txt[159], '</a></strong></p>
+			<p class="smalltext">
+				', $txt[660], ' ', $context['user']['messages'], ' ', $context['user']['messages'] == 1 ? $txt[471] : $txt[153], '.... ', $txt[661], ' <a href="', $scripturl, '?action=pm">', $txt[662], '</a> ', $txt[663], '
+			</p>
+	</div>
+	</div>';
 	}
 
 	echo '
-		</p>
-	</div>';
+<div class="block-foot"><!--no content--></div>
+</div>';
 }
+
 ?>
