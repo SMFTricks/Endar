@@ -3,7 +3,7 @@
 ![Theme Preview](https://raw.githubusercontent.com/SMFTricks/Endar/main/src/preview.png?token=GHSAT0AAAAAACDYJLAGCJFTNSCQFFVXFULAZQV3JZA)
 
 # Endar
-![License](https://img.shields.io/badge/License-MIT-248049) ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-3f73a0) ![Variants](https://img.shields.io/badge/Color%20Variants-Yes-6041a3) ![Dark Mode](https://img.shields.io/badge/Dark%20Mode-Yes-4d827f) ![RTL](https://img.shields.io/badge/RLT%20Support-Yes-bf9d73)
+![License](https://img.shields.io/badge/License-MIT-248049) ![SMF 2.1](https://img.shields.io/badge/SMF-2.1-3f73a0) ![RTL](https://img.shields.io/badge/RLT%20Support-Yes-bf9d73)
 
 * Developed by [Diego Andrés](https://github.com/DiegoAndresCortes)
 * Originally developed by [jasidog](https://www.simplemachines.org/community/index.php?action=profile;u=18524)
