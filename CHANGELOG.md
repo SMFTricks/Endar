@@ -1,7 +1,7 @@
 # Changelog
 
-#### 1.0 - 09 April 2024
-- ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Initial Release
+#### 2.0 - 09 April 2024
+- ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Initial Release for SMF 2.1.x
 
 ## Legend
 - ![Translation](https://smftricks.com/assets/changelog/language.png) Translation
