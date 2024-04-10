@@ -56,7 +56,7 @@ function template_html_above()
 	/*	What is your Lollipop's color?
 		Theme Authors, you can change the color here to make sure your theme's main color gets visible on tab */
 	echo '
-	<meta name="theme-color" content="', !empty($settings['st_site_color']) ? $settings['st_site_color'] : '#567c8f', '">';
+	<meta name="theme-color" content="', !empty($settings['st_site_color']) ? $settings['st_site_color'] : '#AC9B80', '">';
 
 	// Please don't index these Mr Robot.
 	if (!empty($context['robot_no_index']))
@@ -178,18 +178,11 @@ function template_theme_header()
 	echo '
 	<header>
 		<h1 class="forumtitle">
-			<a id="top" href="', $scripturl, '">', empty($context['header_logo_url_html_safe']) ? '
-				<span class="theme-logo">
-					<span>
-						' . substr_replace($settings['theme_name'], '', -1) . '
-						</span>
-					<span>
-						' . substr_replace($settings['theme_name'], '', 0, 4). '
-					</span>
-				</span>' : '
+			<a id="top" href="', $scripturl, '">', empty($context['header_logo_url_html_safe']) ? $context['forum_name'] : '
 				<img src="' . $context['header_logo_url_html_safe'] . '" alt="' . $context['forum_name_html_safe'] . '">', '
 			</a>
 		</h1>
+		', themecustoms_socials(), '
 	</header>';
 }
 
@@ -202,14 +195,15 @@ function template_theme_userarea()
 
 	// Firstly, the user's menu
 	echo '
-	<ul id="top_info">';
+	<div class="topbar">
+		<ul id="top_info">';
 
 	// If the user is logged in, display some things that might be useful.
 	if ($context['user']['is_logged'])
 	{
 		echo '
 			<li>
-				<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) || $context['current_action'] == 'unread'  || $context['current_action'] == 'unreadreplies' ? ' class="active"' : '', ' id="profile_menu_top">
+				<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) ? ' class="active"' : '', ' id="profile_menu_top">
 					', $context['user']['avatar']['image'], '
 					<span class="textmenu">', $context['user']['name'], '</span>
 				</a>
@@ -235,18 +229,6 @@ function template_theme_userarea()
 				<div id="alerts_menu" class="top_menu scrollable"></div>
 			</li>';
 
-		// Language selection
-		if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
-		{
-			echo '
-			<li>
-				<a href="', $scripturl, '?action=profile;area=account" id="language_menu_top">
-					', themecustoms_icon('fa fa-language'), '	
-				</a>
-				', themecustoms_languageselector(), '
-			</li>';
-		}
-
 		// A logout button for people without JavaScript.
 		echo '
 			<li id="nojs_logout">
@@ -254,6 +236,22 @@ function template_theme_userarea()
 					', themecustoms_icon('fa fa-sign-out-alt'), '
 				</a>
 				<script>document.getElementById("nojs_logout").style.display = "none";</script>
+			</li>';
+
+		echo '
+		</ul>
+		<ul class="unread_buttons">
+			<li>
+				<a href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '"', $context['current_action'] == 'unreadreplies' ? ' class="active"' : '', '>
+					', themecustoms_icon('fas fa-comment-dots'), '
+					<span>', $txt['unread_replies'], '</span>
+				</a>
+			</li>
+			<li>
+				<a href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '"', $context['current_action'] == 'unread' ? ' class="active"' : '', '>
+					', themecustoms_icon('fas fa-book-open'), '
+					<span>', $txt['view_unread_category'], '</span>
+				</a>
 			</li>';
 	}
 	// Otherwise they're a guest. Ask them to either register or login.
@@ -279,7 +277,8 @@ function template_theme_userarea()
 
 		// And now we're done.
 		echo '
-		</ul>';
+		</ul>
+	</div>';
 }
 
 /**
@@ -297,12 +296,11 @@ function template_theme_footer()
 					<li class="smf_copyright">', theme_copyright(), '</li>
 				</ul>
 				<div class="footer-other">
-					', themecustoms_socials(), '
 					<a href="', $scripturl, '">', $context['forum_name'], ' &copy; ', date('Y'), '</a>
 					<span class="help-links">
 						<a href="', $scripturl, '?action=help">', $txt['help'], '</a>', (!empty($modSettings['requireAgreement'])) ? '
 						<a href="' . $scripturl . '?action=agreement">' . $txt['terms_and_rules'] . '</a>' : '', '
-						<a href="#top_section">', $txt['go_up'], ' ', themecustoms_icon('fa fa-arrow-up'), '</a>
+						<a href="#wrapper">', $txt['go_up'], ' ', themecustoms_icon('fa fa-arrow-up'), '</a>
 					</span>
 				</div>
 			</div>';
@@ -500,6 +498,7 @@ function template_menu()
 
 	echo '
 					</ul>
+					', themecustoms_search(), '
 				</div>
 			</div>
 		</div>

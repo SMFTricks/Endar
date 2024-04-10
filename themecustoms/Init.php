@@ -57,6 +57,8 @@ class Init extends Config
 	{
 		// Load fonts
 		add_integration_function('integrate_pre_css_output', __CLASS__ . '::fonts', false, '$themedir/themecustoms/Init.php');
+		// Load JS
+		add_integration_function('integrate_pre_javascript_output', __CLASS__ . '::js', false, '$themedir/themecustoms/Init.php');
 	}
 
 	/**
@@ -84,5 +86,21 @@ class Init extends Config
 
 		// Lato Font
 		loadCSSFile('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap', ['external' => true, 'order_pos' => -800]);
+	}
+
+	/**
+	 * Init::js()
+	 * 
+	 * Load custom javascript
+	 * 
+	 * @return void
+	 */
+	public static function js() : void
+	{
+		// Custom js
+		loadJavascriptFile('custom.js', [
+			'force_current' => true,
+			'defer' => true,
+		], 'themecustom_js');
 	}
 }

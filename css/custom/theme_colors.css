@@ -93,6 +93,8 @@
 		--header-bg: hsl(var(--accent-color-hue), 60%, 90%);
 		/* Border */
 		--header-border-color: hsl(var(--primary-color-hue), 45%, 80%);
+		/* Box Shadow */
+		--header-box-shadow: 0 0 20px 10px hsla(var(--primary-color-hue), 18%, 38%, 20%) inset;
 
 	/* Logo */
 		/* Background */
@@ -190,7 +192,7 @@
 
 	/* Forum News */
 		/* Background */
-		--forumnews-bg: hsl(var(--primary-color-hue), 25%, 95%);
+		--forumnews-bg: hsl(var(--primary-color-hue), 35%, 90%);
 		/* Inactive Background */
 		--forumnews-bg-inactive: hsl(var(--primary-color-hue), 20%, 85%);
 

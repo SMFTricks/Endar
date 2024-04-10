@@ -5,9 +5,9 @@ Free & Premium Themes for SMF
 
 [img]https://img.shields.io/badge/License-MIT-248049[/img] [img]https://img.shields.io/badge/SMF-2.1-3f73a0[/img] [img]https://img.shields.io/badge/Responsive-Yes-6e97e1[/img] [img]https://img.shields.io/badge/Color%20Variants-Yes-6041a3[/img] [img]https://img.shields.io/badge/Dark%20Mode-Yes-4d827f[/img] [img]https://img.shields.io/badge/RLT%20Support-Yes-bf9d73[/img]
 
-[b][size=5]NameX[/size][/b]
+[b][size=5]Endar[/size][/b]
 [size=0.8em]Developed by: [url="https://smftricks.com/index.php?action=profile;u=1"]Diego Andrés[/url][/size]
-[size=0.8em]Designed by: [url="https://smftricks.com/index.php?action=profile;u=17"]Harold Zapata[/url][/size]
+[size=0.8em]Originally developed by: [url="https://www.simplemachines.org/community/index.php?action=profile;u=18524"]jasidog[/url][/size]
 
 [size=3][color=#bf307a]Features[/color][/size]
 [list]
@@ -29,7 +29,7 @@ Free & Premium Themes for SMF
 [/list]
 [hr]
 
-[size=12pt][url="https://github.com/SMFTricks/NameX/blob/main/CHANGELOG.md"][color=#cc5d31]Changelog[/color][/url][/size]
-[size=12pt][url="http://demo21.smftricks.com/index.php?theme=4"][color=navy]Demo Online[/color][/url][/size]
+[size=12pt][url="https://github.com/SMFTricks/Endar/blob/main/CHANGELOG.md"][color=#cc5d31]Changelog[/color][/url][/size]
+[size=12pt][url="http://demo21.smftricks.com/index.php?theme=9"][color=navy]Demo Online[/color][/url][/size]
 [size=12pt][url="https://github.com/SMFTricks/Endar"][color=purple]GitHub[/color][/url][/size]
 [size=3][url="https://crowdin.com/project/smf-theme-customs"][color=#495475]Crowdin[/color][/url][/size]

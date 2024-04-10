@@ -62,22 +62,7 @@ function template_profile_popup()
 			<span class="profile_username"><a href="', $scripturl, '?action=profile;u=', $context['user']['id'], '">', $context['user']['name'], '</a></span>
 			<span class="profile_group">', $context['member']['group'], '</span>
 		</div>
-		<div class="profile_user_links unread_buttons">
-			<ol>
-				<li>
-					<a href="', $scripturl, '?action=unreadreplies" title="', $txt['show_unread_replies'], '">
-						', themecustoms_icon('fas fa-comment-dots'), '
-						<span>', $txt['unread_replies'], '</span>
-					</a>
-				</li>
-				<li>
-					<a href="', $scripturl, '?action=unread" title="', $txt['unread_since_visit'], '">
-						', themecustoms_icon('fas fa-book-open'), '
-						<span>', $txt['view_unread_category'], '</span>
-					</a>
-				</li>
-			</ol>
-		</div>
+		', themecustoms_languageselector(), '
 		<div class="profile_user_links">
 			<ol>';
 
@@ -111,11 +96,9 @@ function template_alerts_popup()
 	echo '
 		<div class="alert_bar">
 			<div class="alerts_opts block">
-				<a href="' . $scripturl . '?action=profile;area=notification;sa=markread;', $context['session_var'], '=', $context['session_id'], '" onclick="return markAlertsRead(this)">', $txt['mark_alerts_read'], '</a>
-				<a href="', $scripturl, '?action=profile;area=notification;sa=alerts" class="floatright">', $txt['alert_settings'], '</a>
-			</div>
-			<div class="alerts_box centertext">
-				<a href="', $scripturl, '?action=profile;area=showalerts" class="button">', $txt['all_alerts'], '</a>
+				<a href="', $scripturl, '?action=profile;area=notification;sa=alerts">', $txt['alert_settings'], '</a>
+				 | <a href="', $scripturl, '?action=profile;area=showalerts">', $txt['all_alerts'], '</a>
+				<a class="button floatright" href="' . $scripturl . '?action=profile;area=notification;sa=markread;', $context['session_var'], '=', $context['session_id'], '" onclick="return markAlertsRead(this)">', $txt['mark_alerts_read'], '</a>
 			</div>
 		</div>
 		<div class="alerts_unread">';
