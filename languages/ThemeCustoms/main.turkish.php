@@ -7,8 +7,6 @@
  * @license MIT
  */
 
-global $scripturl, $settings;
-
 // Additional Settings
 $txt['current_theme'] = 'Tema ayarları';
 $txt['st_main'] = 'Ana';
@@ -23,9 +21,11 @@ $txt['st_boards'] = 'Bölümler';
 $txt['st_about'] = 'Hakkında';
 $txt['st_description_default'] = 'Topluluğa hoş geldiniz!';
 $txt['st_description'] = 'Forum açıklaması';
-$txt['st_description_desc'] = 'Forumun açıklamasını ekleyin. Varsayılan: <span class="smalltext">' . $txt['st_description_default'] . '</span>';
+/* Argument: $txt['st_description_default'] */
+$txt['st_description_desc'] = 'Forumun bir açıklamasını ekleyin. Varsayılan:<span class="smalltext">%1$s</span>';
 $txt['st_description_title'] = 'Açıklama Başlığı';
-$txt['st_description_title_desc'] = 'Açıklamanız için özel bir başlık kullanın. Varsayılan: <span class="smalltext">' . $txt['st_about'] . '</span>';
+/* Argument: $txt['st_about'] */
+$txt['st_description_title_desc'] = 'Açıklamanız için özel bir başlık kullanın. Varsayılan: <span class="smalltext">%1$s</span>';
 
 // Separate sticky topics
 $txt['st_sticky_topic'] = 'Sabit Konular';
@@ -82,6 +82,7 @@ $txt['st_community_forum_desc'] = 'Bir portal modu yüklediyseniz bunu kullanın
 $txt['st_collapse_menu'] = 'Masaüstü görünümünde her zaman yan menüyü göster';
 $txt['st_footer_actions'] = 'Menü altbilgi işlemleri';
 $txt['st_footer_actions_desc'] = 'Burada, alt bilgi/alt menüde görüntülemek istediğiniz herhangi bir eylemi koyabilirsiniz. Her eylemin virgülle ayrılması gerekir. Örneğin. <i>yönetici,profil,mlistesi</i>';
+$txt['st_loginlogout_menu'] = 'Ana menüye %1$s, %2$s ve %3$s düğmelerini ekleyin';
 
 // Special Menu
 $txt['st_special_menu'] = 'Özel Menü öğeleri';
@@ -112,7 +113,7 @@ $txt['st_join'] = 'Katıl';
 $txt['sort_by'] = 'Sıralama ölçütü';
 $txt['st_profile_cover'] = 'Profil kapağı';
 $txt['st_news_prom'] = 'Haberler ve Promosyonlar';
-$txt['st_previous'] = 'Previous';
+$txt['st_previous'] = 'Önceki';
 $txt['st_next'] = 'Sonraki';
 
 // Colorpicker
@@ -182,11 +183,13 @@ $txt['st_linkedin_link'] = 'LinkedIn bağlantısı';
 $txt['st_rss_url'] = 'RSS URL';
 $txt['st_rss'] = 'RSS Akışı';
 $txt['st_social_desc'] = 'Devre dışı bırakmak için boş bırakın.';
-$txt['st_rss_url_desc'] = 'Varsayılan forum URL: <em>'.$scripturl. '?action=.xml;type=rss</em>';
+/* Argument: $scripturl */
+$txt['st_rss_url_desc'] = 'Varsayılan forum URL\'si bu şekildedir: <em>%1$s?action=.xml;type=rss</em>';
 
 // Categories
 $txt['st_catcover_enable'] = 'Kategorilerde kapağı etkinleştirin';
-$txt['st_catcover_enable_desc'] = 'Bu, her kategori için bir kapak gösterecektir.<br>Eğer bunları manuel olarak yüklemeniz gerekiyorsa, bunu şu yoldan yapabilirsiniz:<br><em class="smalltext">'. $settings['theme_dir']. '/images/catcover/{category id}.jpg</em>.<br>Kategori Kapak Eklentiniz varsa, bu ayar etkinleştirildiğinde aşağıda yükleme seçeneklerine sahip olacaksınız.';
+/* Argument: $settings['theme_dir'] */
+$txt['st_catcover_enable_desc'] = 'Bu, her kategori için bir kapak gösterecektir.<br>Bunları manuel olarak yüklemeniz gerekiyorsa bunu şu yoldan yapabilirsiniz:<br><em class="smalltext">%1$s/images/catcover/{category id}.jpg</em>.<br>Kategoriler Kapak Eklentiniz varsa, bu ayar etkinleştirildiğinde aşağıda yükleme seçeneklerine sahip olacaksınız. Kategoriler Kapak Eklentiniz varsa, bu ayar etkinleştirildiğinde aşağıda yükleme seçeneklerine sahip olacaksınız.';
 $txt['st_enable_colcategories'] = 'Sütunlardaki kategorileri etkinleştir';
 $txt['st_enable_colcategories_desc'] = 'Masaüstünde her satırda iki kategori görüntülenecektir';
 
@@ -195,9 +198,9 @@ $txt['st_enable_tooltips'] = 'Başlık ipuçlarını etkinleştir';
 $txt['st_enable_tooltips_desc'] = 'Eğer öğenin bir başlık özelliği varsa, fareyle üzerine gelindiğinde araç ipuçlarını etkinleştirecektir.';
 $txt['st_enable_nice_scroll'] = 'NiceScroll/u etkinleştir';
 $txt['st_enable_nice_scroll_desc'] = 'Bu seçenek kaydırma çubuğunun stilini değiştirecektir.';
-$txt['st_disable_theme_effects'] = 'Disable theme effects';
-$txt['st_disable_theme_effects_desc'] = 'This option will disable animations used in the theme.';
-$txt['st_enable_tooltips'] = 'Enable title tooltips';
+$txt['st_disable_theme_effects'] = 'Tema efektlerini devre dışı bırak';
+$txt['st_disable_theme_effects_desc'] = 'Bu seçenek temada kullanılan animasyonları devre dışı bırakacaktır.';
+$txt['st_enable_tooltips'] = 'Başlık ipuçlarını etkinleştir';
 
 // SM Descriptive Bar
 $txt['st_list_of_topics'] = 'Konuların listesi';
@@ -249,7 +252,7 @@ $txt['st_themeinfo_author'] = 'Yazar';
 $txt['st_themeinfo_author_dashboard'] = 'Yazar Kontrol Paneli';
 $txt['st_themeinfo_name'] = 'Tema Adı';
 $txt['st_themeinfo_version'] = 'Tema Sürümü';
-$txt['st_themeinfo_github'] = 'GitHub';
+$txt['st_themeinfo_github'] = 'GitHub Deposu';
 $txt['st_themeinfo_github_desc'] = 'Hata İzleyici ve daha fazlası.';
 $txt['st_themeinfo_support'] = 'Destek';
 $txt['st_themeinfo_support_topic'] = 'Destek Konusu';
@@ -273,5 +276,5 @@ $txt['st_cdn_google'] = 'Google';
 $txt['st_cdn_cloudflare'] = 'Cloudflare';
 $txt['st_fonts'] = 'Yazı Tipleri';
 $txt['st_fonts_desc'] = 'Bu, temada kullanılan özel yazı tiplerini yüklemek için kullanılan kaynağı belirleyecektir.';
-$txt['st_jqueryui'] = 'jQuery UI';
-$txt['st_fontawesome'] = 'Font Awesome';
+$txt['st_jqueryui'] = 'jQuery kullanıcı arayüzü';
+$txt['st_fontawesome'] = 'Harika Yazı Tipi';

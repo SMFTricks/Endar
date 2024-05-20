@@ -8,7 +8,7 @@
  */
 
 // Carousel
-$txt['st_carousel'] = 'Carousel';
+$txt['st_carousel'] = 'Carousel Resimleri';
 $txt['st_enable_carousel'] = 'Carouseli etkinleştir';
 $txt['st_enable_carousel_desc'] = 'Daha fazla ayar görüntülemek için etkinleştirin. Carousel Eklentiniz varsa, bu ayar etkinleştirildiğinde aşağıda yükleme seçeneklerine sahip olacaksınız.';
 $txt['st_carousel_index'] = 'Yalnızca ana sayfada görüntüle';
