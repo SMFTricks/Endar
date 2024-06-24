@@ -159,7 +159,7 @@
 
 	/* Poster */
 		/* Background */
-		--poster-bg: hsl(var(--primary-color-hue), 25%, 88%);
+		--poster-bg: hsl(var(--primary-color-hue), 32%, 88%);
 		/* Width */
 		--poster-width: 215px;
 
