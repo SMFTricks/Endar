@@ -1,6 +1,6 @@
 # Changelog
 
-#### 2.1 - 27 June 2024
+#### 2.1 - 30 June 2024
 - ![New Feature](https://smftricks.com/assets/changelog/tag--plus.png) Changed the memberlist layout.
 - ![Improvement](https://smftricks.com/assets/changelog/tag--pencil.png) Code improvements for 'Theme Customs'
 ---
