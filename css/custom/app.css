@@ -245,6 +245,12 @@ header h1.forumtitle a {
 .social_icons a.rss:hover {
 	color: hsl(25, 85%, var(--social-icon-light));
 }
+.social_icons a.threads:hover i {
+	color: hsl(0, 0%, var(--social-icon-light));
+}
+.social_icons a.bluesky:hover i {
+	color: hsl(211, 99%, var(--social-icon-light));
+}
 .social_icons a i {
 	/* color: hsl(0, 0%, 100%) */
 }
