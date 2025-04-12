@@ -1,5 +1,8 @@
 # Changelog
 
+#### 2.1.3 - 12 April 2025
+- ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed layout issues in Who's Online list.
+
 #### 2.1.2 - 09 April 2025
 - ![Improvement](https://smftricks.com/assets/changelog/tag--pencil.png) Updated FontAwesome to version 6.7.2.
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed issue with sceditor popovers size.
